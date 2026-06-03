@@ -1,0 +1,1277 @@
+{
+  "restaurant": {
+    "name": "Silvertip Cafe",
+    "tagline": "Select",
+    "currency": "INR",
+    "currency_symbol": "₹",
+    "gst_note": "All prices exclusive of GST"
+  },
+  "categories": [
+    {
+      "name": "Soups",
+      "slug": "soups",
+      "page_group": "starters",
+      "display_order": 1,
+      "items": [
+        {
+          "name": "Sweet Corn",
+          "price": 150,
+          "price_alt": 190,
+          "price_label": "VEG / CHICKEN",
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Manchow",
+          "price": 150,
+          "price_alt": 190,
+          "price_label": "VEG / CHICKEN",
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Hot & Sour",
+          "price": 150,
+          "price_alt": 190,
+          "price_label": "VEG / CHICKEN",
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Veg Starters",
+      "slug": "veg-starters",
+      "page_group": "starters",
+      "display_order": 2,
+      "items": [
+        {
+          "name": "French Fries",
+          "price": 190,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": true,
+          "note": null
+        },
+        {
+          "name": "Loaded Fries (Cheese)",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Veg Nuggets",
+          "price": 190,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Momos - Veg",
+          "price": 190,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Gobi 65 / Chilli Gobi",
+          "price": 200,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Gobi Manchurian",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chilli Paneer / Paneer 65",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Paneer Manchurian",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Paneer Tikka",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Mushroom 65 / Chilli",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Veg Samosa (3 pcs)",
+          "price": 50,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Non-Veg Starters",
+      "slug": "non-veg-starters",
+      "page_group": "starters",
+      "display_order": 3,
+      "items": [
+        {
+          "name": "Chicken Nuggets",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Fingers",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Momos",
+          "price": 230,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken 65 / Chilli",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Manchurian",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Pepper Chicken",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Popcorn",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Omelette & Toast",
+      "slug": "omelette-toast",
+      "page_group": "starters",
+      "display_order": 4,
+      "items": [
+        {
+          "name": "Masala Omelette",
+          "price": 90,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Cheese Omelette",
+          "price": 125,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Bread Toast / Omelette",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Bun Toast / Omelette",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "slug": "burgers",
+      "page_group": "starters",
+      "display_order": 5,
+      "items": [
+        {
+          "name": "Classic Veg Burger",
+          "price": 190,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Veg Cheese Burger",
+          "price": 210,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Chicken Cheese Burger",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Spicy Chicken Burger",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Crispy Chicken Burger",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": true,
+          "note": "With Fries - Add 75"
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "slug": "sandwiches",
+      "page_group": "starters",
+      "display_order": 6,
+      "items": [
+        {
+          "name": "Veg Sandwich",
+          "price": 175,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Chilli Cheese Sandwich",
+          "price": 200,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Roasted Paneer Sandwich",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Egg Sandwich",
+          "price": 200,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "Chicken Cheese Sandwich",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        },
+        {
+          "name": "BBQ Chicken Sandwich",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "With Fries - Add 75"
+        }
+      ]
+    },
+    {
+      "name": "Pizzas [8\"]",
+      "slug": "pizzas",
+      "page_group": "mains",
+      "display_order": 7,
+      "items": [
+        {
+          "name": "Veg Delight Pizza",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Peppy Paneer Pizza",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Sweet Corn Pizza",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Margherita Pizza",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": true,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Cheese Burst Pizza",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Hawaiian Veg Pizza",
+          "price": 275,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Spicy Chicken Pizza",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Pepper Chicken Pizza",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Tandoori Chicken Pizza",
+          "price": 310,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": true,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Hawaiian Chicken Pizza",
+          "price": 310,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        },
+        {
+          "name": "Chicken Supreme Pizza",
+          "price": 310,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Extra Cheese / Toppings - Add 25"
+        }
+      ]
+    },
+    {
+      "name": "Fried Rice / Noodles",
+      "slug": "fried-rice-noodles",
+      "page_group": "mains",
+      "display_order": 8,
+      "items": [
+        {
+          "name": "Veg Fried Rice / Noodles",
+          "price": 190,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Egg Fried Rice / Noodles",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chicken Fried Rice / Noodles",
+          "price": 260,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": true,
+          "note": null
+        },
+        {
+          "name": "Paneer Fried Rice / Noodles",
+          "price": 260,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Mushroom Fried Rice / Noodles",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Pasta",
+      "slug": "pasta",
+      "page_group": "mains",
+      "display_order": 9,
+      "items": [
+        {
+          "name": "Penne Arabiata Veg",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Penne Arabiata Paneer",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Penne Arabiata Chicken",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Creamy Alfredo Veg",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Creamy Alfredo Paneer",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Creamy Alfredo Chicken",
+          "price": 290,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": true,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Rice & Curries",
+      "slug": "rice-curries",
+      "page_group": "mains",
+      "display_order": 10,
+      "items": [
+        {
+          "name": "Basmati Rice",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Ghee / Jeera Rice",
+          "price": 100,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Millets",
+          "price": 125,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Dal",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Mushroom Curry",
+          "price": 175,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Paneer Tikka Masala",
+          "price": 200,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Aloo Gobi Masala",
+          "price": 175,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Green Peas Masala",
+          "price": 175,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Egg Masala",
+          "price": 200,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Pepper Chicken Masala",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Chettinad Chicken Curry",
+          "price": 225,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": true,
+          "note": null
+        },
+        {
+          "name": "Chicken Tikka Masala",
+          "price": 250,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": false,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "slug": "beverages",
+      "page_group": "beverages",
+      "display_order": 11,
+      "items": [
+        {
+          "name": "Filter Coffee",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": true,
+          "note": "Coffee"
+        },
+        {
+          "name": "Chocolate Coffee",
+          "price": 95,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "White Choco Latte",
+          "price": 120,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 120,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Cappuccino / Latte",
+          "price": 100,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Cold Coffee",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Vanilla Frappe",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Hazelnut Frappe",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Chocolate Frappe",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Americano / Espresso",
+          "price": 60,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Coffee"
+        },
+        {
+          "name": "Cutting Chai",
+          "price": 25,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Tea with Milk"
+        },
+        {
+          "name": "Silvertip (Special) Chai",
+          "price": 35,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": true,
+          "note": "Tea with Milk"
+        },
+        {
+          "name": "Ginger / Masala Chai",
+          "price": 45,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Tea with Milk"
+        },
+        {
+          "name": "Chocolate Chai",
+          "price": 60,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Tea with Milk"
+        },
+        {
+          "name": "Black Tea",
+          "price": 30,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Lemon / Lemon Mint Tea",
+          "price": 50,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Green Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Lemon Grass",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Lemon Verbena",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Peach & Apricot Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Black Current Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Chamomile Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Moroccan Mint Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Lavish Blue Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Hibiscus Tea",
+          "price": 80,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Peach Ice Tea",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Lemon Ice Tea",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Infusion Teas"
+        },
+        {
+          "name": "Peach Mojito",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Mojitos"
+        },
+        {
+          "name": "Spicy Guava Mojito",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Mojitos"
+        },
+        {
+          "name": "Blueberry Mojito",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Mojitos"
+        },
+        {
+          "name": "Mint Blast Mojito",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Mojitos"
+        },
+        {
+          "name": "Chocolate Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Oreo Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Kit Kat Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Vanilla Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Blueberry Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Strawberry Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Mango Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Black Currant Shake",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Shakes"
+        },
+        {
+          "name": "Lemon / Mint Cooler",
+          "price": 60,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Fresh Juice"
+        },
+        {
+          "name": "Lemon Soda",
+          "price": 90,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Fresh Juice"
+        },
+        {
+          "name": "Seasonal Fruit Juice",
+          "price": 150,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": "Fresh Juice"
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "slug": "ice-creams",
+      "page_group": "beverages",
+      "display_order": 12,
+      "items": [
+        {
+          "name": "Single Scoop",
+          "price": 60,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Double Scoop",
+          "price": 100,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        },
+        {
+          "name": "Toppings",
+          "price": 30,
+          "price_alt": null,
+          "price_label": null,
+          "is_veg": true,
+          "is_available": true,
+          "is_popular": false,
+          "note": null
+        }
+      ]
+    }
+  ]
+}

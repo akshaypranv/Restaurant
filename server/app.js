@@ -1,0 +1,74 @@
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const config = require('./config/config');
+const db = require('./config/db');
+const menuRoutes = require('./routes/menuRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+
+const app = express();
+
+// Apply security headers
+app.use(helmet());
+
+// Configure CORS
+app.use(cors({
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (config.ALLOWED_ORIGINS.indexOf(origin) !== -1 || config.NODE_ENV === 'development') {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
+// Body parsers
+app.use(express.json());
+
+// Public health check route
+app.get('/api/v1/health', async (req, res) => {
+  try {
+    // Check database connectivity
+    await db.query('SELECT 1');
+    return res.status(200).json({
+      status: 'success',
+      message: 'Server is healthy',
+      database: 'connected'
+    });
+  } catch (err) {
+    return res.status(500).json({
+      status: 'error',
+      message: 'Server or database is unhealthy',
+      database: err.message
+    });
+  }
+});
+
+// Register routes
+app.use('/api/v1', menuRoutes);
+app.use('/api/v1/admin', adminRoutes);
+
+// Wildcard 404 handler for API routes
+app.use('/api/*', (req, res) => {
+  res.status(404).json({
+    status: 'error',
+    message: 'API route not found',
+    code: 'NOT_FOUND'
+  });
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    status: 'error',
+    message: err.message || 'An internal server error occurred',
+    code: err.code || 'INTERNAL_SERVER_ERROR'
+  });
+});
+
+module.exports = app;
+
