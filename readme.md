@@ -100,8 +100,6 @@ During recent validation testing, several bugs were detected and resolved. Below
 - **Diagnostic Action & Setup:**
   - Audited [seed.js](file:///b:/INTERN/Restaurant/server/seed.js) where default seeds are compiled.
   - Identified dummy account:
-    - **Email:** `admin@silvertip.com`
-    - **Password:** `password123`
   - Validated that `bcrypt` correctly parses passwords against hashed values stored in the `admins` table.
 
 ---
