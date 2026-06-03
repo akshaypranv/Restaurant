@@ -54,13 +54,24 @@ const login = async (req, res, next) => {
 // Get all items including unavailable ones (for admin dashboard table)
 const getAdminMenu = async (req, res, next) => {
   try {
-    const queryStr = `
-      SELECT m.*, c.name AS category_name
-      FROM menu_items m
-      JOIN categories c ON m.category_id = c.id
-      ORDER BY c.display_order ASC, m.id ASC
-    `;
-    const result = await db.query(queryStr);
+    // Try filtering out deleted items; fall back if is_deleted column doesn't exist
+    let result;
+    try {
+      result = await db.query(`
+        SELECT m.*, c.name AS category_name
+        FROM menu_items m
+        JOIN categories c ON m.category_id = c.id
+        WHERE m.is_deleted = false
+        ORDER BY c.display_order ASC, m.id ASC
+      `);
+    } catch (colErr) {
+      result = await db.query(`
+        SELECT m.*, c.name AS category_name
+        FROM menu_items m
+        JOIN categories c ON m.category_id = c.id
+        ORDER BY c.display_order ASC, m.id ASC
+      `);
+    }
     
     // Parse prices as floats
     const items = result.rows.map(item => ({
@@ -217,7 +228,7 @@ const updateItem = async (req, res, next) => {
   }
 };
 
-// Soft delete only — sets is_available = false. Never hard deletes!
+// Soft delete — marks item as deleted and unavailable. Never hard deletes!
 const deleteItem = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -232,14 +243,20 @@ const deleteItem = async (req, res, next) => {
       });
     }
 
-    // Perform soft delete
-    const queryStr = `
-      UPDATE menu_items
-      SET is_available = false, updated_at = NOW()
-      WHERE id = $1
-      RETURNING *;
-    `;
-    const result = await db.query(queryStr, [id]);
+    // Perform soft delete — try with is_deleted column, fall back if it doesn't exist
+    let result;
+    try {
+      result = await db.query(
+        `UPDATE menu_items SET is_available = false, is_deleted = true, updated_at = NOW() WHERE id = $1 RETURNING *;`,
+        [id]
+      );
+    } catch (colErr) {
+      // is_deleted column may not exist yet — fall back to just setting is_available
+      result = await db.query(
+        `UPDATE menu_items SET is_available = false, updated_at = NOW() WHERE id = $1 RETURNING *;`,
+        [id]
+      );
+    }
 
     // Sync DB contents to menu.json and invalidate cache
     await syncMenuJson();

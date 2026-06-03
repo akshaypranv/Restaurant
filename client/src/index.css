@@ -48,3 +48,24 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* Custom scrollbar for category tabs */
+.category-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.category-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 9999px;
+}
+.category-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.35); /* Amber brand color with some opacity */
+  border-radius: 9999px;
+}
+.category-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.65);
+}
+/* Firefox scrollbar styles */
+.category-scrollbar {
+  scrollbar-color: rgba(245, 158, 11, 0.35) rgba(255, 255, 255, 0.03);
+  scrollbar-width: thin;
+}

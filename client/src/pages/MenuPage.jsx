@@ -34,9 +34,9 @@ const MenuPage = () => {
         <SearchResults />
       ) : (
         <>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/10 pb-2">
             <CategoryTabs categories={tabCategories} />
-            <div className="flex justify-end md:pb-2">
+            <div className="flex-shrink-0 flex justify-end pb-2 md:pb-0">
               <VegToggle />
             </div>
           </div>

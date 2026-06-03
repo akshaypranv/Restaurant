@@ -3,7 +3,7 @@ const router = express.Router();
 const adminController = require('../controllers/adminController');
 const auth = require('../middleware/auth');
 const { loginLimiter } = require('../middleware/rateLimiter');
-const { validateLogin, validateMenuItem } = require('../middleware/validate');
+const { validateLogin, validateMenuItem, validateMenuItemUpdate } = require('../middleware/validate');
 
 // POST /api/v1/admin/auth/login (rate-limited, validated)
 router.post('/auth/login', loginLimiter, validateLogin, adminController.login);
@@ -15,7 +15,7 @@ router.get('/menu', auth, adminController.getAdminMenu);
 router.post('/menu', auth, validateMenuItem, adminController.createItem);
 
 // PUT /api/v1/admin/menu/:id (JWT protected, validated)
-router.put('/menu/:id', auth, validateMenuItem, adminController.updateItem);
+router.put('/menu/:id', auth, validateMenuItemUpdate, adminController.updateItem);
 
 // DELETE /api/v1/admin/menu/:id (JWT protected, soft delete)
 router.delete('/menu/:id', auth, adminController.deleteItem);

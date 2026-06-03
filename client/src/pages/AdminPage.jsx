@@ -79,8 +79,8 @@ const AdminPage = () => {
         { headers: { Authorization: `Bearer ${adminToken}` } }
       );
       if (response.data && response.data.status === 'success') {
-        // Soft deletion sets is_available = false
-        setItems(prev => prev.map(item => item.id === itemId ? { ...item, is_available: false } : item));
+        // Soft deletion removes the item from the dashboard table view
+        setItems(prev => prev.filter(item => item.id !== itemId));
       }
     } catch (err) {
       setError(err.response?.data?.message || err.message || 'Failed to delete item.');

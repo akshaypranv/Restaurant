@@ -10,10 +10,9 @@ const CategoryTabs = ({ categories = [] }) => {
   ];
 
   return (
-    <div className="w-full border-b border-white/10 pb-2 mb-8">
+    <div className="flex-1 min-w-0">
       <div 
-        className="flex items-center gap-4 md:gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth pb-1"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="flex items-center gap-4 md:gap-6 overflow-x-auto category-scrollbar snap-x snap-mandatory scroll-smooth pb-3"
       >
         {allTabs.map((tab) => {
           const isActive = activeCategory === tab.slug;

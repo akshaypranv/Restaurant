@@ -42,7 +42,7 @@ const validateLogin = [
   checkValidationResult
 ];
 
-// Admin menu item validation
+// Admin menu item validation — used for POST (create): all required fields enforced
 const validateMenuItem = [
   body('category_id')
     .isInt({ min: 1 }).withMessage('Category ID must be a positive integer'),
@@ -77,8 +77,49 @@ const validateMenuItem = [
   checkValidationResult
 ];
 
+// Admin menu item update validation — used for PUT (update): all fields optional
+// This allows partial updates like toggling is_available or is_popular individually
+const validateMenuItemUpdate = [
+  body('category_id')
+    .optional()
+    .isInt({ min: 1 }).withMessage('Category ID must be a positive integer'),
+  body('name')
+    .optional()
+    .isString().withMessage('Name must be a string')
+    .trim()
+    .isLength({ min: 1, max: 200 }).withMessage('Name must be between 1 and 200 characters')
+    .escape(),
+  body('price')
+    .optional()
+    .isFloat({ min: 0 }).withMessage('Price must be a non-negative number'),
+  body('price_alt')
+    .optional({ nullable: true, checkFalsy: true })
+    .isFloat({ min: 0 }).withMessage('Alternative price must be a non-negative number'),
+  body('price_label')
+    .optional({ nullable: true })
+    .isString().withMessage('Price label must be a string')
+    .trim()
+    .escape(),
+  body('is_veg')
+    .optional()
+    .isBoolean().withMessage('is_veg must be a boolean value'),
+  body('is_available')
+    .optional()
+    .isBoolean().withMessage('is_available must be a boolean value'),
+  body('is_popular')
+    .optional()
+    .isBoolean().withMessage('is_popular must be a boolean value'),
+  body('note')
+    .optional({ nullable: true })
+    .isString().withMessage('Note must be a string')
+    .trim()
+    .escape(),
+  checkValidationResult
+];
+
 module.exports = {
   validateSearch,
   validateLogin,
-  validateMenuItem
+  validateMenuItem,
+  validateMenuItemUpdate
 };

@@ -60,6 +60,7 @@ const seed = async () => {
         is_veg         BOOLEAN NOT NULL DEFAULT TRUE,
         is_available   BOOLEAN NOT NULL DEFAULT TRUE,
         is_popular     BOOLEAN NOT NULL DEFAULT FALSE,
+        is_deleted     BOOLEAN NOT NULL DEFAULT FALSE,
         note           TEXT,
         search_vector  TSVECTOR GENERATED ALWAYS AS (
                          to_tsvector('english', name)
