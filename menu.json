@@ -19,7 +19,7 @@
           "price_alt": 190,
           "price_label": "VEG / CHICKEN",
           "is_veg": true,
-          "is_available": false,
+          "is_available": true,
           "is_popular": false,
           "note": null
         },
@@ -29,7 +29,7 @@
           "price_alt": 190,
           "price_label": "VEG / CHICKEN",
           "is_veg": true,
-          "is_available": false,
+          "is_available": true,
           "is_popular": false,
           "note": null
         },
@@ -158,26 +158,6 @@
           "price_label": null,
           "is_veg": true,
           "is_available": true,
-          "is_popular": false,
-          "note": null
-        },
-        {
-          "name": "Loaded fries",
-          "price": 190,
-          "price_alt": null,
-          "price_label": "VEG",
-          "is_veg": true,
-          "is_available": true,
-          "is_popular": false,
-          "note": null
-        },
-        {
-          "name": "Test Item",
-          "price": 120,
-          "price_alt": null,
-          "price_label": null,
-          "is_veg": true,
-          "is_available": false,
           "is_popular": false,
           "note": null
         }
@@ -374,26 +354,6 @@
           "is_available": true,
           "is_popular": true,
           "note": "With Fries - Add 75"
-        },
-        {
-          "name": "Test Burger",
-          "price": 199,
-          "price_alt": null,
-          "price_label": null,
-          "is_veg": true,
-          "is_available": false,
-          "is_popular": false,
-          "note": null
-        },
-        {
-          "name": "adfjb",
-          "price": 234,
-          "price_alt": 2345,
-          "price_label": "asdfkjb",
-          "is_veg": true,
-          "is_available": false,
-          "is_popular": false,
-          "note": null
         }
       ]
     },
