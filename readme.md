@@ -58,6 +58,15 @@ The project features a **two-way synchronicity model**:
 - **Groq Completions API Migration:** Upgraded the secure completions backend chat proxy (`chatController.js`) to use Groq's API endpoint (`https://api.groq.com/openai/v1/chat/completions`) using native `fetch` to guarantee reliable operation in offline/constrained environments.
 - **Contrast Compliance & Rules Test Suite:** Built automatic layout checks (`designSystem.test.jsx`) enforcing WCAG relative luminance contrast standards (e.g. AA 4.5:1, AAA 7:1) and ensuring no legacy dark-palette variables remain.
 
+### 📬 Phase 6: Admin Messages Inbox (TDD)
+- **Messages Inbox Panel:** Built a new `AdminMessagesPanel` component inside the Admin Dashboard, allowing the restaurant owner to view all customer contact form submissions in a clean table UI — no SQL queries or API knowledge required.
+- **Tab Navigation:** Added a tab bar (Menu Items | Messages) to the Admin Dashboard, replacing the single-view layout with a tabbed interface. Active tab is indicated with a `brand-red` underline.
+- **Message Interaction:** Each message row shows the sender's name, email, subject, date, and read/unread status badge. Clicking a row expands it inline to reveal the full message body. An owner can click "Mark as Read" to update the status.
+- **Test-Driven Development:** All 9 new tests were written before the components (RED phase), then the components were built to pass them (GREEN phase):
+  - `AdminMessagesPanel.test.jsx` — 6 tests (table headers, empty state, row rendering, badge display, expand-on-click, mark-as-read API call).
+  - `AdminTabs.test.jsx` — 3 tests (tab rendering, default tab, tab switching).
+- **No Backend Changes Required:** Leveraged existing `GET /api/v1/contact` and `PUT /api/v1/contact/:id/read` endpoints.
+
 ---
 
 ## 3. Bug Ledger & Diagnostic Resolution
@@ -137,12 +146,13 @@ graph TD
 ### Automated Tests
 Execute backend unit, integration, and flow tests:
 ```bash
-npm run test --prefix server
+npm run test --prefix server   # 33 tests
+npm run test --prefix client   # 25 tests
 ```
 
 ### Manual Verification
 1. **Public Views:** Navigate routes `/`, `/menu`, and `/contact` verifying responsiveness and component performance.
 2. **Contact Form:** Post a submission, confirm validation triggers, and check if it stores in database tables.
 3. **Chatbot Widget:** Ask questions about the menu options to confirm LLM responses.
-4. **Admin Dashboard:** Access the dashboard to view contact submissions and edit items.
-
+4. **Admin Dashboard — Menu Items:** Access the dashboard to edit items, toggle availability, and add/delete items.
+5. **Admin Dashboard — Messages:** Click the "Messages" tab to view customer submissions, expand a message, and mark it as read.

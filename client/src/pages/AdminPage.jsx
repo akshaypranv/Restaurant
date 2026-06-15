@@ -3,6 +3,7 @@ import axios from 'axios';
 import useMenuStore from '../store/useMenuStore';
 import AdminLogin from '../components/admin/AdminLogin';
 import AdminMenuTable from '../components/admin/AdminMenuTable';
+import AdminMessagesPanel from '../components/admin/AdminMessagesPanel';
 import AddItemModal from '../components/admin/AddItemModal';
 import EditItemModal from '../components/admin/EditItemModal';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
@@ -16,6 +17,7 @@ const AdminPage = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState('menu');
 
   // Modal control states
   const [isAddOpen, setIsAddOpen] = useState(false);
@@ -98,37 +100,77 @@ const AdminPage = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-surface-gray">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
         <div>
           <h2 className="text-xl font-bold uppercase text-text-dark tracking-wide">
             Admin Dashboard
           </h2>
           <p className="text-accent-taupe text-xs mt-1">
-            Manage your categories, availability, and item information
+            Manage your menu items and view customer messages
           </p>
         </div>
+        {activeTab === 'menu' && (
+          <button
+            onClick={() => setIsAddOpen(true)}
+            className="btn-primary flex items-center gap-1.5 active:scale-95"
+          >
+            <span>+</span> Add New Item
+          </button>
+        )}
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="flex gap-0 border-b border-surface-gray mb-8">
         <button
-          onClick={() => setIsAddOpen(true)}
-          className="btn-primary flex items-center gap-1.5 active:scale-95"
+          onClick={() => setActiveTab('menu')}
+          className={`px-5 py-3 text-sm font-semibold uppercase tracking-wider transition-all relative ${
+            activeTab === 'menu'
+              ? 'text-brand-red'
+              : 'text-accent-taupe hover:text-text-dark'
+          }`}
         >
-          <span>+</span> Add New Item
+          Menu Items
+          {activeTab === 'menu' && (
+            <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-red rounded-full" />
+          )}
+        </button>
+        <button
+          onClick={() => setActiveTab('messages')}
+          className={`px-5 py-3 text-sm font-semibold uppercase tracking-wider transition-all relative ${
+            activeTab === 'messages'
+              ? 'text-brand-red'
+              : 'text-accent-taupe hover:text-text-dark'
+          }`}
+        >
+          Messages
+          {activeTab === 'messages' && (
+            <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-red rounded-full" />
+          )}
         </button>
       </div>
 
       {error && <ErrorBanner message={error} onClose={() => setError(null)} />}
 
-      {loading ? (
-        <div className="py-20 flex flex-col items-center">
-          <LoadingSpinner size="lg" />
-          <p className="text-accent-taupe text-sm mt-4 animate-pulse">Loading items table...</p>
-        </div>
+      {/* Tab Content */}
+      {activeTab === 'menu' ? (
+        <>
+          {loading ? (
+            <div className="py-20 flex flex-col items-center">
+              <LoadingSpinner size="lg" />
+              <p className="text-accent-taupe text-sm mt-4 animate-pulse">Loading items table...</p>
+            </div>
+          ) : (
+            <AdminMenuTable
+              items={items}
+              onEdit={handleEditClick}
+              onDelete={handleDeleteItem}
+              onToggleField={handleToggleField}
+            />
+          )}
+        </>
       ) : (
-        <AdminMenuTable
-          items={items}
-          onEdit={handleEditClick}
-          onDelete={handleDeleteItem}
-          onToggleField={handleToggleField}
-        />
+        <AdminMessagesPanel adminToken={adminToken} />
       )}
 
       {/* Add Modal */}
@@ -155,3 +197,4 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
+
