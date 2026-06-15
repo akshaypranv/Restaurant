@@ -22,8 +22,8 @@ const CategoryTabs = ({ categories = [] }) => {
               onClick={() => setActiveCategory(tab.slug)}
               className={`snap-start flex-shrink-0 text-sm md:text-base font-medium tracking-wide uppercase px-2 py-3 border-b-2 transition-all duration-200 outline-none
                 ${isActive 
-                  ? 'border-amber-brand text-white' 
-                  : 'border-transparent text-white/50 hover:text-white/80'}`}
+                  ? 'border-brand-red text-brand-red font-semibold' 
+                  : 'border-transparent text-accent-taupe hover:text-text-dark'}`}
             >
               {tab.name}
             </button>

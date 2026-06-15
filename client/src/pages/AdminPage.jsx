@@ -98,20 +98,20 @@ const AdminPage = () => {
 
   return (
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-4 border-b border-surface-gray">
         <div>
-          <h2 className="text-xl font-bold uppercase text-white tracking-wide">
+          <h2 className="text-xl font-bold uppercase text-text-dark tracking-wide">
             Admin Dashboard
           </h2>
-          <p className="text-white/50 text-xs mt-1">
+          <p className="text-accent-taupe text-xs mt-1">
             Manage your categories, availability, and item information
           </p>
         </div>
         <button
           onClick={() => setIsAddOpen(true)}
-          className="bg-amber-brand text-black font-bold uppercase tracking-wider text-xs px-4 py-2.5 rounded-xl hover:bg-amber-brand/80 transition-all select-none active:scale-95 shadow-lg"
+          className="btn-primary flex items-center gap-1.5 active:scale-95"
         >
-          + Add New Item
+          <span>+</span> Add New Item
         </button>
       </div>
 
@@ -120,7 +120,7 @@ const AdminPage = () => {
       {loading ? (
         <div className="py-20 flex flex-col items-center">
           <LoadingSpinner size="lg" />
-          <p className="text-white/50 text-sm mt-4 animate-pulse">Loading items table...</p>
+          <p className="text-accent-taupe text-sm mt-4 animate-pulse">Loading items table...</p>
         </div>
       ) : (
         <AdminMenuTable

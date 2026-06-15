@@ -1,5 +1,4 @@
 import React from 'react';
-import GlassCard from '../ui/GlassCard';
 import VegBadge from '../ui/VegBadge';
 import PriceBadge from '../ui/PriceBadge';
 
@@ -7,10 +6,10 @@ const MenuItemCard = ({ item }) => {
   const { name, price, price_alt, price_label, is_veg, is_popular, note } = item;
 
   return (
-    <GlassCard className="p-5 flex flex-col justify-between gap-4 h-full relative overflow-hidden group">
+    <div className="card p-5 flex flex-col justify-between gap-4 h-full relative overflow-hidden group">
       {/* Popular Badge decoration */}
       {is_popular && (
-        <div className="absolute top-0 right-0 bg-amber-brand text-black text-[9px] font-bold tracking-widest px-3 py-1 rounded-bl-lg uppercase shadow-md animate-pulse">
+        <div className="absolute top-0 right-0 bg-brand-red text-[#FAF5F1] text-[9px] font-bold tracking-widest px-3 py-1 rounded-bl-lg uppercase shadow-md">
           ★ Popular
         </div>
       )}
@@ -19,22 +18,22 @@ const MenuItemCard = ({ item }) => {
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center gap-2">
             <VegBadge isVeg={is_veg} />
-            <h3 className="text-white/90 font-medium text-base group-hover:text-white transition-colors duration-200">
+            <h3 className="text-text-dark font-semibold text-base group-hover:text-brand-red transition-colors duration-200">
               {name}
             </h3>
           </div>
           {note && (
-            <p className="text-white/50 text-xs italic font-normal leading-relaxed">
+            <p className="text-accent-taupe text-xs italic font-normal leading-relaxed">
               {note}
             </p>
           )}
         </div>
       </div>
 
-      <div className="flex items-end justify-between mt-2 pt-2 border-t border-white/5">
+      <div className="flex items-end justify-between mt-2 pt-2 border-t border-surface-gray">
         <PriceBadge price={price} priceAlt={price_alt} priceLabel={price_label} />
       </div>
-    </GlassCard>
+    </div>
   );
 };
 

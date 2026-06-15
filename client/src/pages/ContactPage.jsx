@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import GlassCard from '../components/ui/GlassCard';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -59,16 +58,16 @@ const ContactPage = () => {
     <div className="w-full max-w-6xl mx-auto py-24 px-6">
       {/* Title */}
       <div className="text-center mb-16">
-        <span className="text-xs font-semibold tracking-widest text-amber-brand uppercase mb-2 block">
+        <span className="text-xs font-semibold tracking-widest text-brand-red uppercase mb-2 block">
           Get In Touch
         </span>
         <h1
-          className="text-4xl md:text-5xl font-bold text-[#F5F0E8] mb-4"
+          className="text-4xl md:text-5xl font-bold text-text-dark mb-4"
           style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
         >
           Contact Silvertip Cafe
         </h1>
-        <p className="text-sm md:text-base text-[#8A8070] max-w-xl mx-auto">
+        <p className="text-sm md:text-base text-accent-taupe max-w-xl mx-auto">
           We’d love to hear from you. Drop us a line regarding reservations, private events, feedback, or general questions.
         </p>
       </div>
@@ -77,57 +76,57 @@ const ContactPage = () => {
         {/* Info Column */}
         <div className="lg:col-span-5 flex flex-col gap-6 w-full">
           {/* Hour Card */}
-          <GlassCard className="p-6">
-            <h3 className="text-amber-brand font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+          <div className="card p-6">
+            <h3 className="text-brand-red font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
               🕒 Timings
             </h3>
-            <p className="text-sm text-[#F5F0E8] font-medium">Monday - Saturday</p>
-            <p className="text-xs text-[#8A8070] mb-3">8:00 AM - 10:00 PM</p>
-            <p className="text-sm text-[#F5F0E8] font-medium">Sunday</p>
-            <p className="text-xs text-[#8A8070]">9:00 AM - 8:00 PM</p>
-          </GlassCard>
+            <p className="text-sm text-text-dark font-semibold">Monday - Saturday</p>
+            <p className="text-xs text-accent-taupe mb-3">8:00 AM - 10:00 PM</p>
+            <p className="text-sm text-text-dark font-semibold">Sunday</p>
+            <p className="text-xs text-accent-taupe">9:00 AM - 8:00 PM</p>
+          </div>
 
           {/* Location Card */}
-          <GlassCard className="p-6">
-            <h3 className="text-amber-brand font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+          <div className="card p-6">
+            <h3 className="text-brand-red font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
               📍 Location & Contact
             </h3>
-            <p className="text-sm text-[#F5F0E8] font-medium">Address</p>
-            <p className="text-xs text-[#8A8070] mb-3">12 Roast Lane, Coimbatore, India</p>
-            <p className="text-sm text-[#F5F0E8] font-medium">Phone</p>
-            <p className="text-xs text-[#8A8070] mb-3">+91 98765 43210</p>
-            <p className="text-sm text-[#F5F0E8] font-medium">Email</p>
-            <p className="text-xs text-[#8A8070]">hello@silvertipcafe.com</p>
-          </GlassCard>
+            <p className="text-sm text-text-dark font-semibold">Address</p>
+            <p className="text-xs text-accent-taupe mb-3">12 Roast Lane, Coimbatore, India</p>
+            <p className="text-sm text-text-dark font-semibold">Phone</p>
+            <p className="text-xs text-accent-taupe mb-3">+91 98765 43210</p>
+            <p className="text-sm text-text-dark font-semibold">Email</p>
+            <p className="text-xs text-accent-taupe">hello@silvertipcafe.com</p>
+          </div>
 
           {/* Map Placeholder Card */}
-          <GlassCard className="p-6 overflow-hidden flex flex-col items-center justify-center text-center relative group min-h-[200px]">
-            <div className="absolute inset-0 bg-black/40 bg-radial-hero opacity-30 group-hover:opacity-50 transition-opacity pointer-events-none" />
+          <div className="card p-6 overflow-hidden flex flex-col items-center justify-center text-center relative group min-h-[200px]">
+            <div className="absolute inset-0 bg-surface-gray opacity-20 pointer-events-none" />
             <span className="text-3xl mb-3 z-10" role="img" aria-label="Map Icon">🗺️</span>
-            <h4 className="text-[#F5F0E8] font-semibold text-sm mb-1 z-10">Map View (Fictional Location)</h4>
-            <p className="text-[#8A8070] text-xs max-w-xs mb-4 z-10">Located in the tranquil lanes of Coimbatore, near coffee plantations.</p>
+            <h4 className="text-text-dark font-semibold text-sm mb-1 z-10">Map View (Fictional Location)</h4>
+            <p className="text-accent-taupe text-xs max-w-xs mb-4 z-10">Located in the tranquil lanes of Coimbatore, near coffee plantations.</p>
             <a
               href="https://maps.google.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-white/5 border border-white/10 hover:border-amber-brand/40 text-xs font-semibold text-[#F5F0E8] hover:text-amber-brand rounded-lg transition-all z-10"
+              className="px-4 py-2 bg-surface-white border border-surface-gray hover:border-brand-red/40 text-xs font-semibold text-text-dark hover:text-brand-red rounded-lg transition-all z-10 shadow-sm"
             >
               Get Directions
             </a>
-          </GlassCard>
+          </div>
         </div>
 
         {/* Form Column */}
         <div className="lg:col-span-7 w-full">
-          <GlassCard className="p-8 md:p-10">
-            <h3 className="text-[#F5F0E8] text-xl font-bold mb-6">Send a Message</h3>
+          <div className="card p-8 md:p-10">
+            <h3 className="text-text-dark text-xl font-bold mb-6">Send a Message</h3>
 
             {statusMsg && (
               <div
                 className={`p-4 rounded-xl text-xs mb-6 border transition-all ${
                   statusMsg.type === 'success'
-                    ? 'bg-emerald-500/10 border-emerald-500/20 text-[#52C99A]'
-                    : 'bg-red-500/10 border-red-500/20 text-[#E05252]'
+                    ? 'bg-success/10 border-success/20 text-success font-medium'
+                    : 'bg-danger/10 border-danger/20 text-danger font-medium'
                 }`}
                 role="alert"
               >
@@ -138,7 +137,7 @@ const ContactPage = () => {
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               {/* Name */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="text-xs uppercase tracking-wider text-[#8A8070] font-semibold">
+                <label htmlFor="name" className="text-xs uppercase tracking-wider text-accent-taupe font-semibold">
                   Your Name
                 </label>
                 <input
@@ -149,13 +148,13 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                   placeholder="e.g. Meera"
-                  className="w-full px-4 py-3 bg-black/50 border border-white/10 focus:border-amber-brand/40 focus:ring-1 focus:ring-amber-brand/35 rounded-xl text-sm text-[#F5F0E8] placeholder-white/20 transition-all outline-none"
+                  className="input-field"
                 />
               </div>
 
               {/* Email */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="text-xs uppercase tracking-wider text-[#8A8070] font-semibold">
+                <label htmlFor="email" className="text-xs uppercase tracking-wider text-accent-taupe font-semibold">
                   Email Address
                 </label>
                 <input
@@ -166,13 +165,13 @@ const ContactPage = () => {
                   onChange={handleChange}
                   required
                   placeholder="e.g. meera@example.com"
-                  className="w-full px-4 py-3 bg-black/50 border border-white/10 focus:border-amber-brand/40 focus:ring-1 focus:ring-amber-brand/35 rounded-xl text-sm text-[#F5F0E8] placeholder-white/20 transition-all outline-none"
+                  className="input-field"
                 />
               </div>
 
               {/* Subject Dropdown */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="subject" className="text-xs uppercase tracking-wider text-[#8A8070] font-semibold">
+                <label htmlFor="subject" className="text-xs uppercase tracking-wider text-accent-taupe font-semibold">
                   Subject
                 </label>
                 <select
@@ -181,7 +180,7 @@ const ContactPage = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-[#0a0a0a] border border-white/10 focus:border-amber-brand/40 focus:ring-1 focus:ring-amber-brand/35 rounded-xl text-sm text-[#F5F0E8] transition-all outline-none cursor-pointer"
+                  className="input-field cursor-pointer"
                 >
                   <option value="General Inquiry">General Inquiry</option>
                   <option value="Reservation">Reservation</option>
@@ -192,7 +191,7 @@ const ContactPage = () => {
 
               {/* Message */}
               <div className="flex flex-col gap-2">
-                <label htmlFor="message" className="text-xs uppercase tracking-wider text-[#8A8070] font-semibold">
+                <label htmlFor="message" className="text-xs uppercase tracking-wider text-accent-taupe font-semibold">
                   Message
                 </label>
                 <textarea
@@ -203,7 +202,7 @@ const ContactPage = () => {
                   required
                   rows={5}
                   placeholder="Type your query or reservation request details here..."
-                  className="w-full px-4 py-3 bg-black/50 border border-white/10 focus:border-amber-brand/40 focus:ring-1 focus:ring-amber-brand/35 rounded-xl text-sm text-[#F5F0E8] placeholder-white/20 transition-all outline-none resize-none"
+                  className="input-field resize-none"
                 />
               </div>
 
@@ -211,12 +210,12 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 mt-2 bg-amber-brand hover:bg-amber-400 disabled:bg-amber-brand/50 text-black text-sm uppercase font-bold tracking-widest rounded-xl transition-all shadow-lg shadow-amber-brand/10 hover:shadow-amber-brand/30 active:scale-[0.98]"
+                className="btn-primary w-full py-4 mt-2 active:scale-[0.98] disabled:opacity-50"
               >
                 {loading ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
-          </GlassCard>
+          </div>
         </div>
       </div>
     </div>

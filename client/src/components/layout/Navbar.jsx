@@ -28,9 +28,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'backdrop-blur-lg bg-black/80 border-b border-white/10 py-3 shadow-lg shadow-black/20'
-          : 'backdrop-blur-md bg-black/20 border-b border-white/5 py-5'
+        isScrolled || currentView !== 'home' ? 'navbar-solid py-3' : 'navbar-transparent py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6">
@@ -39,8 +37,10 @@ const Navbar = () => {
           className="flex items-center gap-3 cursor-pointer select-none group"
           onClick={() => handleNavClick('home', '#/')}
         >
-          <span className="text-xl font-bold tracking-widest text-white transition-colors duration-200">
-            SILVERTIP <span className="text-amber-brand group-hover:text-amber-400 transition-colors">CAFE</span>
+          <span className={`text-xl font-bold tracking-widest transition-colors duration-200 ${
+            isScrolled || currentView !== 'home' ? 'text-text-dark' : 'text-[#FAF5F1]'
+          }`}>
+            SILVERTIP <span className="text-brand-red">CAFE</span>
           </span>
         </div>
 
@@ -50,8 +50,10 @@ const Navbar = () => {
             onClick={() => handleNavClick('home', '#/')}
             className={`text-sm font-medium tracking-wide uppercase transition-all duration-200 ${
               currentView === 'home'
-                ? 'text-amber-brand font-semibold border-b border-amber-brand pb-0.5'
-                : 'text-[#8A8070] hover:text-[#F5F0E8]'
+                ? 'text-brand-red font-semibold border-b border-brand-red pb-0.5'
+                : isScrolled || currentView !== 'home'
+                  ? 'text-accent-taupe hover:text-text-dark'
+                  : 'text-[#E0DBD8] hover:text-[#FAF5F1]'
             }`}
           >
             Home
@@ -60,8 +62,10 @@ const Navbar = () => {
             onClick={() => handleNavClick('menu', '#/menu')}
             className={`text-sm font-medium tracking-wide uppercase transition-all duration-200 ${
               currentView === 'menu'
-                ? 'text-amber-brand font-semibold border-b border-amber-brand pb-0.5'
-                : 'text-[#8A8070] hover:text-[#F5F0E8]'
+                ? 'text-brand-red font-semibold border-b border-brand-red pb-0.5'
+                : isScrolled || currentView !== 'home'
+                  ? 'text-accent-taupe hover:text-text-dark'
+                  : 'text-[#E0DBD8] hover:text-[#FAF5F1]'
             }`}
           >
             Menu
@@ -70,8 +74,10 @@ const Navbar = () => {
             onClick={() => handleNavClick('contact', '#/contact')}
             className={`text-sm font-medium tracking-wide uppercase transition-all duration-200 ${
               currentView === 'contact'
-                ? 'text-amber-brand font-semibold border-b border-amber-brand pb-0.5'
-                : 'text-[#8A8070] hover:text-[#F5F0E8]'
+                ? 'text-brand-red font-semibold border-b border-brand-red pb-0.5'
+                : isScrolled || currentView !== 'home'
+                  ? 'text-accent-taupe hover:text-text-dark'
+                  : 'text-[#E0DBD8] hover:text-[#FAF5F1]'
             }`}
           >
             Contact
@@ -82,7 +88,11 @@ const Navbar = () => {
         <div className="flex md:hidden items-center">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-[#F5F0E8] hover:text-amber-brand focus:outline-none p-1.5 rounded-lg border border-white/10 bg-white/5 transition-all"
+            className={`focus:outline-none p-1.5 rounded-lg border transition-all ${
+              isScrolled || currentView !== 'home'
+                ? 'text-text-dark border-surface-gray bg-surface-gray/50 hover:text-brand-red'
+                : 'text-[#FAF5F1] border-[#FAF5F1]/10 bg-[#FAF5F1]/5 hover:text-brand-red'
+            }`}
             aria-label="Toggle menu"
           >
             <svg
@@ -114,11 +124,11 @@ const Navbar = () => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="md:hidden w-full backdrop-blur-xl bg-black/95 border-b border-white/10 absolute top-full left-0 transition-all duration-300 py-6 px-6 shadow-xl flex flex-col gap-4">
+        <div className="md:hidden w-full bg-surface-white border-b border-surface-gray absolute top-full left-0 transition-all duration-300 py-6 px-6 shadow-xl flex flex-col gap-4">
           <button
             onClick={() => handleNavClick('home', '#/')}
             className={`text-left text-base font-medium uppercase py-2 tracking-wider ${
-              currentView === 'home' ? 'text-amber-brand' : 'text-white/60 hover:text-white'
+              currentView === 'home' ? 'text-brand-red' : 'text-text-dark/60 hover:text-text-dark'
             }`}
           >
             Home
@@ -126,7 +136,7 @@ const Navbar = () => {
           <button
             onClick={() => handleNavClick('menu', '#/menu')}
             className={`text-left text-base font-medium uppercase py-2 tracking-wider ${
-              currentView === 'menu' ? 'text-amber-brand' : 'text-white/60 hover:text-white'
+              currentView === 'menu' ? 'text-brand-red' : 'text-text-dark/60 hover:text-text-dark'
             }`}
           >
             Menu
@@ -134,7 +144,7 @@ const Navbar = () => {
           <button
             onClick={() => handleNavClick('contact', '#/contact')}
             className={`text-left text-base font-medium uppercase py-2 tracking-wider ${
-              currentView === 'contact' ? 'text-amber-brand' : 'text-white/60 hover:text-white'
+              currentView === 'contact' ? 'text-brand-red' : 'text-text-dark/60 hover:text-text-dark'
             }`}
           >
             Contact

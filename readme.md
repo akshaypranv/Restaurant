@@ -53,6 +53,11 @@ The project features a **two-way synchronicity model**:
 - **Backend Chat Gateway:** Added `POST /api/chat` server-side route proxying calls to the LLM backend with context payloads populated from Zustand stores.
 - **Token Guards & Rate Limiting:** Enforces strict token context budgets and custom rate limits per IP to control API usage.
 
+### 🎨 Phase 5: Warm Café Reskin & Groq LLM Upgrade (Recent Updates)
+- **Bright Warm Café Palette Reskin:** Replaced the dark glassmorphic UI with a bright, warm café aesthetic using Tailwind variables (`brand-red`, `surface-white`, `surface-gray`, `text-dark`, and `accent-taupe`). Refactored stylesheets, layouts, carousels, cards, toggle switches, and page wrappers across the entire client application.
+- **Groq Completions API Migration:** Upgraded the secure completions backend chat proxy (`chatController.js`) to use Groq's API endpoint (`https://api.groq.com/openai/v1/chat/completions`) using native `fetch` to guarantee reliable operation in offline/constrained environments.
+- **Contrast Compliance & Rules Test Suite:** Built automatic layout checks (`designSystem.test.jsx`) enforcing WCAG relative luminance contrast standards (e.g. AA 4.5:1, AAA 7:1) and ensuring no legacy dark-palette variables remain.
+
 ---
 
 ## 3. Bug Ledger & Diagnostic Resolution
@@ -72,6 +77,18 @@ The project features a **two-way synchronicity model**:
 ### 🐞 Bug 4: Admin Soft-Delete Operations
 - **Symptoms:** Deleting an item threw SQL errors indicating missing `is_deleted` column.
 - **Diagnostic Action:** Modified backend handlers to use try/catch blocks falling back to checking availability flags, and corrected frontend state updating logic.
+
+### 🐞 Bug 5: Scrolled Navbar Brand Logo Text Visibility Bug
+- **Symptoms:** The brand text "SILVERTIP" in the navbar logo was invisible when first opening the page at the top, showing only after scrolling down.
+- **Diagnostic Action:** Made main content top-padding conditional in [App.jsx](file:///home/akshay/Restaurant/client/src/App.jsx) (removing `pt-20` on the Home view to allow the dark Hero section to bleed full-screen behind the transparent header), and updated scrolled state checks in [Navbar.jsx](file:///home/akshay/Restaurant/client/src/components/layout/Navbar.jsx) to force solid coloring on all other pages.
+
+### 🐞 Bug 6: Admin Login & CRUD Modal High Contrast Bug
+- **Symptoms:** The admin login interface and CRUD forms/modals were unreadable due to extremely low contrast (white text/inputs overlaying light backgrounds).
+- **Diagnostic Action:** Replaced legacy glassmorphic card wrappers, inputs, and toggles with bright-warm components using the `.card`, `.input-field`, and `.btn-primary` classes.
+
+### 🐞 Bug 7: Non-Hermetic Chat Controller Tests
+- **Symptoms:** Running backend tests on servers where `GROQ_API_KEY` was configured locally in `.env` caused live fetch failures instead of falling back to mock mode.
+- **Diagnostic Action:** Isolated the key-missing tests in [chat.test.js](file:///home/akshay/Restaurant/server/tests/chat.test.js) by temporarily deleting the key from the test environment block and restoring it afterwards.
 
 ---
 

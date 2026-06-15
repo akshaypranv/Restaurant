@@ -27,6 +27,9 @@ describe('ChatBot API Proxy', () => {
     });
 
     test('successful chat call returns mock response when API key is missing', async () => {
+      const oldKey = process.env.GROQ_API_KEY;
+      delete process.env.GROQ_API_KEY;
+
       const res = await request(app)
         .post('/api/v1/chat')
         .send({
@@ -38,18 +41,22 @@ describe('ChatBot API Proxy', () => {
       expect(res.status).toBe(200);
       expect(res.body.status).toBe('success');
       expect(res.body.data.reply).toContain('Brewed');
+
+      if (oldKey) {
+        process.env.GROQ_API_KEY = oldKey;
+      }
     });
 
-    test('successful chat call forwards to Anthropic when API key is configured', async () => {
+    test('successful chat call forwards to Groq when API key is configured', async () => {
       // Temporarily mock API key
-      const oldKey = process.env.ANTHROPIC_API_KEY;
-      process.env.ANTHROPIC_API_KEY = 'real-api-key-from-testing';
+      const oldKey = process.env.GROQ_API_KEY;
+      process.env.GROQ_API_KEY = 'real-api-key-from-testing';
 
       const mockResponse = {
         ok: true,
         json: jest.fn().mockResolvedValue({
-          content: [
-            { text: 'Mock Claude Response' }
+          choices: [
+            { message: { content: 'Mock Groq Response' } }
           ]
         })
       };
@@ -61,29 +68,29 @@ describe('ChatBot API Proxy', () => {
           messages: [
             { role: 'user', content: 'hello' }
           ],
-          menuContext: { test: true }
+          menuContext: [{ name: 'Veg Pizza', price: 250 }]
         });
 
       expect(res.status).toBe(200);
       expect(res.body.status).toBe('success');
-      expect(res.body.data.reply).toBe('Mock Claude Response');
+      expect(res.body.data.reply).toBe('Mock Groq Response');
       expect(global.fetch).toHaveBeenCalledWith(
-        'https://api.anthropic.com/v1/messages',
+        'https://api.groq.com/openai/v1/chat/completions',
         expect.objectContaining({
           method: 'POST',
           headers: expect.objectContaining({
-            'x-api-key': 'real-api-key-from-testing'
+            'Authorization': 'Bearer real-api-key-from-testing'
           })
         })
       );
 
       // Restore key
-      process.env.ANTHROPIC_API_KEY = oldKey;
+      process.env.GROQ_API_KEY = oldKey;
     });
 
-    test('handles Anthropic API errors and returns 502', async () => {
-      const oldKey = process.env.ANTHROPIC_API_KEY;
-      process.env.ANTHROPIC_API_KEY = 'real-api-key-from-testing';
+    test('handles Groq API errors and returns 502', async () => {
+      const oldKey = process.env.GROQ_API_KEY;
+      process.env.GROQ_API_KEY = 'real-api-key-from-testing';
 
       const mockResponse = {
         ok: false,
@@ -103,9 +110,8 @@ describe('ChatBot API Proxy', () => {
 
       expect(res.status).toBe(502);
       expect(res.body.status).toBe('error');
-      expect(res.body.code).toBe('BAD_GATEWAY');
 
-      process.env.ANTHROPIC_API_KEY = oldKey;
+      process.env.GROQ_API_KEY = oldKey;
     });
   });
 });

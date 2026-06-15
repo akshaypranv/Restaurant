@@ -37,20 +37,20 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div className="w-full max-w-2xl mx-auto sticky top-4 z-40 mb-8 px-4 md:px-0">
-      <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl flex items-center px-4 py-3 shadow-xl focus-within:ring-2 focus-within:ring-amber-brand/50 transition-all duration-300">
-        <span className="text-white/40 text-lg mr-3">🔍</span>
+      <div className="bg-surface-gray border border-surface-gray rounded-xl flex items-center px-4 py-3 shadow-sm focus-within:border-brand-red focus-within:ring-2 focus-within:ring-brand-red/15 transition-all duration-300">
+        <span className="text-accent-taupe text-lg mr-3">🔍</span>
         <input
           type="search"
           role="searchbox"
           placeholder="Search dishes (e.g. momos, paneer, coffee)..."
           value={localQuery}
           onChange={(e) => setLocalQuery(e.target.value)}
-          className="bg-transparent text-white placeholder-white/40 text-sm md:text-base outline-none w-full font-normal"
+          className="bg-transparent text-text-dark placeholder-accent-taupe text-sm md:text-base outline-none w-full font-normal"
         />
         {localQuery && (
           <button
             onClick={() => setLocalQuery('')}
-            className="text-white/40 hover:text-white/80 p-1"
+            className="text-accent-taupe hover:text-text-dark p-1"
             aria-label="Clear search"
           >
             ✕

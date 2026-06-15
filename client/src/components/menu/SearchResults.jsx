@@ -15,14 +15,14 @@ const SearchResults = () => {
     return (
       <div className="w-full py-12 flex flex-col items-center">
         <LoadingSpinner />
-        <p className="text-white/50 text-sm mt-3 animate-pulse">Searching menu...</p>
+        <p className="text-accent-taupe text-sm mt-3 animate-pulse">Searching menu...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="w-full py-12 text-center text-red-400 font-medium">
+      <div className="w-full py-12 text-center text-red-500 font-medium">
         Error searching menu: {error}
       </div>
     );
@@ -30,21 +30,21 @@ const SearchResults = () => {
 
   return (
     <div className="w-full mb-12">
-      <div className="flex items-center justify-between mb-8 pb-2 border-b border-white/10">
-        <h2 className="text-white font-bold text-lg tracking-wide uppercase">
+      <div className="flex items-center justify-between mb-8 pb-2 border-b border-surface-gray">
+        <h2 className="text-text-dark font-bold text-lg tracking-wide uppercase">
           Search Results
         </h2>
-        <span className="text-amber-brand text-sm font-semibold">
+        <span className="text-brand-red text-sm font-semibold">
           Found {filteredResults.length} {filteredResults.length === 1 ? 'item' : 'items'}
         </span>
       </div>
 
       {filteredResults.length === 0 ? (
-        <div className="w-full py-16 text-center text-white/40 border border-white/5 bg-white/[0.02] rounded-2xl backdrop-blur-md">
+        <div className="w-full py-16 text-center text-accent-taupe card rounded-xl">
           <span className="text-4xl block mb-3">🍽️</span>
           <p className="text-sm font-medium">No dishes match "{searchQuery}"</p>
           {vegFilter && (
-            <p className="text-xs text-white/30 mt-1">
+            <p className="text-xs text-accent-taupe/80 mt-1">
               Try disabling the "Veg Only" toggle to see non-veg results.
             </p>
           )}

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import GlassCard from '../ui/GlassCard';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -104,19 +103,19 @@ const ChatBotWidget = () => {
 
       {/* Slide-Up Chat Window */}
       {isOpen && (
-        <GlassCard className="w-[320px] sm:w-[360px] h-[450px] flex flex-col rounded-2xl border border-white/10 shadow-2xl bg-black/90 backdrop-blur-xl mb-4 overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="chatbot-panel w-[320px] sm:w-[360px] h-[450px] flex flex-col mb-4 overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300">
           {/* Header */}
-          <div className="px-5 py-4 border-b border-white/5 flex items-center justify-between bg-white/[0.02]">
+          <div className="chatbot-header flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="text-xl" role="img" aria-label="Coffee cup emoji">☕</span>
               <div className="text-left">
-                <h3 className="text-sm font-bold text-white leading-none">Brewed</h3>
-                <span className="text-[10px] text-amber-brand font-medium">Silvertip Assistant</span>
+                <h3 className="text-sm font-bold text-[#FAF5F1] leading-none">Brewed</h3>
+                <span className="text-[10px] text-[#FAF5F1]/80 font-medium">Silvertip Assistant</span>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-white/40 hover:text-white text-xs p-1"
+              className="text-[#FAF5F1]/70 hover:text-[#FAF5F1] text-xs p-1"
               aria-label="Close chat"
             >
               ✕
@@ -126,16 +125,12 @@ const ChatBotWidget = () => {
           {/* Messages Body */}
           <div
             ref={chatContainerRef}
-            className="flex-1 p-4 overflow-y-auto flex flex-col gap-3 scrollbar-thin scrollbar-thumb-white/15"
+            className="flex-1 p-4 overflow-y-auto flex flex-col gap-3"
           >
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`max-w-[80%] p-3 rounded-2xl text-xs leading-relaxed ${
-                  msg.role === 'user'
-                    ? 'self-end bg-amber-brand/10 border border-amber-brand/20 text-[#F5F0E8] rounded-tr-none'
-                    : 'self-start bg-white/5 border border-white/10 text-[#F5F0E8] rounded-tl-none'
-                }`}
+                className={msg.role === 'user' ? 'chatbot-message-user' : 'chatbot-message-bot'}
               >
                 {msg.content}
               </div>
@@ -143,39 +138,39 @@ const ChatBotWidget = () => {
 
             {/* Loading / Typing State */}
             {loading && (
-              <div className="self-start bg-white/5 border border-white/10 text-white p-3 rounded-2xl rounded-tl-none flex items-center gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-white/60 dot-bounce" style={{ animationDelay: '0s' }} />
-                <div className="w-1.5 h-1.5 rounded-full bg-white/60 dot-bounce" style={{ animationDelay: '0.2s' }} />
-                <div className="w-1.5 h-1.5 rounded-full bg-white/60 dot-bounce" style={{ animationDelay: '0.4s' }} />
+              <div className="chatbot-message-bot flex items-center gap-1">
+                <div className="w-1.5 h-1.5 rounded-full bg-text-dark/60 dot-bounce" style={{ animationDelay: '0s' }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-text-dark/60 dot-bounce" style={{ animationDelay: '0.2s' }} />
+                <div className="w-1.5 h-1.5 rounded-full bg-text-dark/60 dot-bounce" style={{ animationDelay: '0.4s' }} />
               </div>
             )}
             <div ref={messagesEndRef} />
           </div>
 
           {/* Footer Input Form */}
-          <form onSubmit={handleSend} className="p-3 border-t border-white/5 bg-white/[0.01] flex gap-2">
+          <form onSubmit={handleSend} className="p-3 border-t border-surface-gray bg-surface-white flex gap-2">
             <input
               type="text"
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Ask Brewed a question..."
-              className="flex-1 bg-black/60 border border-white/10 focus:border-amber-brand/40 rounded-xl px-3 py-2 text-xs text-[#F5F0E8] placeholder-white/20 outline-none transition-all"
+              className="input-field flex-1 px-3 py-2 text-xs"
             />
             <button
               type="submit"
               disabled={!inputText.trim() || loading}
-              className="px-3.5 bg-amber-brand hover:bg-amber-400 disabled:opacity-40 text-black text-xs font-bold rounded-xl transition-all flex items-center justify-center active:scale-95"
+              className="btn-primary px-3.5 text-xs font-bold active:scale-95 disabled:opacity-40"
             >
               Send
             </button>
           </form>
-        </GlassCard>
+        </div>
       )}
 
       {/* Floating Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 rounded-full bg-amber-brand hover:bg-amber-400 flex items-center justify-center shadow-lg shadow-amber-brand/20 hover:shadow-amber-brand/40 active:scale-95 transition-all duration-300 border border-white/10 relative overflow-hidden group"
+        className="chatbot-fab flex items-center justify-center hover:opacity-90 active:scale-95 transition-all duration-300 relative overflow-hidden group"
         aria-label={isOpen ? "Close AI Assistant" : "Open AI Assistant"}
       >
         <span className="text-2xl group-hover:scale-110 transition-transform duration-300" role="img" aria-label="Chatbot bubble">

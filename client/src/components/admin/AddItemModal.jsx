@@ -68,14 +68,14 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="w-full max-w-lg bg-[#0e0e0e] border border-white/10 rounded-2xl p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
-        <div className="flex items-center justify-between mb-6 pb-2 border-b border-white/5">
-          <h3 className="text-lg font-bold text-white uppercase tracking-wide">
+      <div className="w-full max-w-lg bg-surface-white border border-surface-gray rounded-2xl p-6 shadow-2xl overflow-y-auto max-h-[90vh]">
+        <div className="flex items-center justify-between mb-6 pb-2 border-b border-surface-gray">
+          <h3 className="text-lg font-bold text-text-dark uppercase tracking-wide">
             Add New Menu Item
           </h3>
           <button 
             onClick={onClose} 
-            className="text-white/40 hover:text-white"
+            className="text-accent-taupe hover:text-text-dark"
             aria-label="Close modal"
           >
             ✕
@@ -86,23 +86,23 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-sm">
           <div className="flex flex-col gap-1">
-            <label className="text-white/60 font-medium">Item Name</label>
+            <label className="text-text-dark/80 font-medium">Item Name</label>
             <input
               type="text"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. Loaded Fries"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+              className="input-field"
             />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-white/60 font-medium">Category</label>
+            <label className="text-text-dark/80 font-medium">Category</label>
             <select
               value={categoryId}
               onChange={(e) => setCategoryId(e.target.value)}
-              className="bg-[#0e0e0e] border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+              className="input-field"
             >
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
@@ -114,7 +114,7 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
-              <label className="text-white/60 font-medium">Price (₹)</label>
+              <label className="text-text-dark/80 font-medium">Price (₹)</label>
               <input
                 type="number"
                 required
@@ -123,11 +123,11 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="190"
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+                className="input-field"
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-white/60 font-medium">Alt Price (₹) (Optional)</label>
+              <label className="text-text-dark/80 font-medium">Alt Price (₹) (Optional)</label>
               <input
                 type="number"
                 min="0"
@@ -135,41 +135,41 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
                 value={priceAlt}
                 onChange={(e) => setPriceAlt(e.target.value)}
                 placeholder="250"
-                className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+                className="input-field"
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-white/60 font-medium">Price Label (e.g. VEG / CHICKEN) (Optional)</label>
+            <label className="text-text-dark/80 font-medium">Price Label (e.g. VEG / CHICKEN) (Optional)</label>
             <input
               type="text"
               value={priceLabel}
               onChange={(e) => setPriceLabel(e.target.value)}
               placeholder="VEG / CHICKEN"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+              className="input-field"
             />
           </div>
 
-          <div className="flex items-center justify-between p-3 bg-white/5 border border-white/10 rounded-xl">
-            <span className="text-white/80 font-medium">Vegetarian</span>
+          <div className="flex items-center justify-between p-3 bg-surface-white border border-surface-gray rounded-xl">
+            <span className="text-text-dark/80 font-medium">Vegetarian</span>
             <button
               type="button"
               onClick={() => setIsVeg(!isVeg)}
-              className={`w-10 h-6 flex items-center rounded-full p-0.5 transition-colors ${isVeg ? 'bg-green-500' : 'bg-red-500'}`}
+              className={`w-10 h-6 flex items-center rounded-full p-0.5 transition-colors ${isVeg ? 'bg-green-600' : 'bg-brand-red'}`}
             >
               <div className={`w-5 h-5 bg-white rounded-full transition-transform ${isVeg ? 'translate-x-4' : 'translate-x-0'}`} />
             </button>
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="text-white/60 font-medium">Add-on Note (Optional)</label>
+            <label className="text-text-dark/80 font-medium">Add-on Note (Optional)</label>
             <input
               type="text"
               value={note}
               onChange={(e) => setNote(e.target.value)}
               placeholder="e.g. With Fries - Add 75"
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-white outline-none focus:ring-2 focus:ring-amber-brand/50"
+              className="input-field"
             />
           </div>
 
@@ -177,14 +177,14 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-5 py-2.5 rounded-xl border border-white/10 text-white/70 hover:text-white hover:bg-white/5 transition-all"
+              className="px-5 py-2.5 rounded-lg border border-surface-gray text-accent-taupe hover:text-text-dark hover:bg-surface-gray/50 transition-all"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="bg-amber-brand text-black font-semibold px-5 py-2.5 rounded-xl hover:bg-amber-brand/80 transition-all disabled:opacity-50"
+              className="btn-primary px-5 py-2.5 rounded-lg active:scale-95 disabled:opacity-50"
             >
               {loading ? 'Adding...' : 'Add Item'}
             </button>

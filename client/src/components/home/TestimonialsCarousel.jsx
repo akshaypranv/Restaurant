@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import GlassCard from '../ui/GlassCard';
 
 const testimonials = [
   {
@@ -68,11 +67,11 @@ const TestimonialsCarousel = () => {
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         {/* Title */}
         <div className="text-center mb-10">
-          <span className="text-xs font-semibold tracking-widest text-amber-brand uppercase mb-2 block">
+          <span className="text-xs font-semibold tracking-widest text-brand-red uppercase mb-2 block">
             Reviews
           </span>
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#F5F0E8] mb-4"
+            className="text-3xl md:text-4xl font-bold text-text-dark mb-4"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             Loved by Coffee Enthusiasts
@@ -85,26 +84,30 @@ const TestimonialsCarousel = () => {
           onKeyDown={handleKeyDown}
           tabIndex={0}
           aria-label="Customer Testimonials Slider. Use Left and Right arrow keys to navigate."
-          className="w-full relative focus:outline-none focus:ring-1 focus:ring-amber-brand/35 rounded-2xl cursor-default"
+          className="w-full relative focus:outline-none focus:ring-1 focus:ring-brand-red/35 rounded-2xl cursor-default"
         >
           {/* Slide Content */}
-          <GlassCard className="p-8 md:p-12 min-h-[260px] flex flex-col justify-between items-center text-center transition-all duration-300 transform">
+          <div className="testimonial-card p-8 md:p-12 min-h-[260px] flex flex-col justify-between items-center text-center transition-all duration-300 transform">
             <div className="flex flex-col items-center">
               {/* Star Rating */}
               <div 
-                className="flex gap-1 mb-6 text-amber-400 text-sm" 
+                className="flex gap-1 mb-6 text-sm" 
                 role="img" 
                 aria-label={`${testimonials[activeIndex].rating} out of 5 stars`}
               >
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i}>
-                    {i < testimonials[activeIndex].rating ? '★' : '☆'}
+                  <span 
+                    key={i} 
+                    aria-hidden="true" 
+                    className={i < testimonials[activeIndex].rating ? 'star-filled' : 'star-empty'}
+                  >
+                    ★
                   </span>
                 ))}
               </div>
 
               {/* Quote */}
-              <blockquote className="text-lg md:text-xl font-medium text-[#F5F0E8] italic max-w-2xl leading-relaxed mb-8">
+              <blockquote className="text-lg md:text-xl font-medium text-text-dark italic max-w-2xl leading-relaxed mb-8">
                 &ldquo;{testimonials[activeIndex].quote}&rdquo;
               </blockquote>
             </div>
@@ -114,22 +117,22 @@ const TestimonialsCarousel = () => {
               <img
                 src={testimonials[activeIndex].avatar}
                 alt={`${testimonials[activeIndex].name} Avatar`}
-                className="w-12 h-12 rounded-full border border-amber-brand/20 object-cover"
+                className="w-12 h-12 rounded-full border border-brand-red/20 object-cover"
                 loading="lazy"
               />
               <div className="text-left">
-                <cite className="not-italic text-sm font-semibold text-white/90 block">
+                <cite className="not-italic text-sm font-semibold text-text-dark block">
                   {testimonials[activeIndex].name}
                 </cite>
-                <span className="text-xs text-[#8A8070]">Verified Customer</span>
+                <span className="text-xs text-accent-taupe font-medium">Verified Customer</span>
               </div>
             </div>
-          </GlassCard>
+          </div>
 
           {/* Left Arrow Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-2 md:-left-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full border border-white/10 bg-black/40 hover:bg-black/80 hover:border-amber-brand/40 text-white hover:text-amber-brand transition-all z-20"
+            className="absolute left-2 md:-left-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full border border-surface-gray bg-surface-white/80 hover:bg-surface-gray hover:border-brand-red text-text-dark hover:text-brand-red transition-all z-20 shadow-md"
             aria-label="Previous slide"
           >
             ←
@@ -138,7 +141,7 @@ const TestimonialsCarousel = () => {
           {/* Right Arrow Controls */}
           <button
             onClick={nextSlide}
-            className="absolute right-2 md:-right-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full border border-white/10 bg-black/40 hover:bg-black/80 hover:border-amber-brand/40 text-white hover:text-amber-brand transition-all z-20"
+            className="absolute right-2 md:-right-12 top-1/2 -translate-y-1/2 p-2.5 rounded-full border border-surface-gray bg-surface-white/80 hover:bg-surface-gray hover:border-brand-red text-text-dark hover:text-brand-red transition-all z-20 shadow-md"
             aria-label="Next slide"
           >
             →
@@ -152,7 +155,7 @@ const TestimonialsCarousel = () => {
               key={i}
               onClick={() => setActiveIndex(i)}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                i === activeIndex ? 'bg-amber-brand w-6' : 'bg-white/20'
+                i === activeIndex ? 'bg-brand-red w-6' : 'bg-surface-gray'
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />

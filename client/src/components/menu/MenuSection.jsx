@@ -10,7 +10,7 @@ const MenuSection = ({ categoryName, items = [], vegOnly = false }) => {
   return (
     <section className="mb-12 w-full">
       {categoryName && (
-        <h2 className="text-white font-bold text-lg tracking-wide uppercase mb-6 border-l-4 border-amber-brand pl-3">
+        <h2 className="text-text-dark font-bold text-lg tracking-wide uppercase mb-6 border-l-4 border-brand-red pl-3">
           {categoryName}
         </h2>
       )}

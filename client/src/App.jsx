@@ -48,12 +48,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] bg-radial-hero text-white/90 flex flex-col justify-between overflow-x-hidden relative">
+    <div className="min-h-screen bg-surface-white text-text-dark flex flex-col justify-between overflow-x-hidden relative">
       {/* Header / Navigation bar */}
       <Navbar />
 
       {/* Main content scaffold */}
-      <main className="flex-1 flex flex-col items-center w-full pt-20 px-4 md:px-0">
+      <main className={`flex-1 flex flex-col items-center w-full px-4 md:px-0 ${currentView === 'home' ? '' : 'pt-20'}`}>
         {renderView()}
       </main>
 

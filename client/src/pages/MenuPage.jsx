@@ -34,7 +34,7 @@ const MenuPage = () => {
         <SearchResults />
       ) : (
         <>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-white/10 pb-2">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 border-b border-surface-gray pb-2">
             <CategoryTabs categories={tabCategories} />
             <div className="flex-shrink-0 flex justify-end pb-2 md:pb-0">
               <VegToggle />
@@ -44,7 +44,7 @@ const MenuPage = () => {
           {loading ? (
             <div className="py-20 flex flex-col items-center">
               <LoadingSpinner size="lg" />
-              <p className="text-white/50 text-sm mt-4 animate-pulse">Loading cafe menu...</p>
+              <p className="text-accent-taupe text-sm mt-4 animate-pulse">Loading cafe menu...</p>
             </div>
           ) : (
             <div className="w-full">
@@ -69,7 +69,7 @@ const MenuPage = () => {
                       vegOnly={false}
                     />
                   ) : (
-                    <p className="text-center text-white/40 py-12">Category not found.</p>
+                    <p className="text-center text-accent-taupe py-12">Category not found.</p>
                   );
                 })()
               )}

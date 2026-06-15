@@ -1,15 +1,14 @@
 import React from 'react';
-import GlassCard from '../ui/GlassCard';
 
 const AboutSection = () => {
   return (
     <section className="w-full py-20 px-6 bg-transparent">
       <div className="max-w-6xl mx-auto">
-        <GlassCard className="p-8 md:p-12 overflow-hidden">
+        <div className="card p-8 md:p-12 overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Image Column */}
             <div className="w-full lg:w-1/2 relative group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-amber-brand/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none z-10" />
+              <div className="absolute inset-0 bg-gradient-to-tr from-brand-red/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none z-10" />
               <img
                 src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80"
                 alt="Silvertip Cafe Atmosphere"
@@ -20,16 +19,16 @@ const AboutSection = () => {
 
             {/* Content Column */}
             <div className="w-full lg:w-1/2 flex flex-col items-start">
-              <span className="text-xs font-semibold tracking-widest text-amber-brand uppercase mb-2">
+              <span className="text-xs font-semibold tracking-widest text-brand-red uppercase mb-2">
                 Our Story
               </span>
               <h2
-                className="text-3xl md:text-4xl font-bold text-[#F5F0E8] mb-6"
+                className="text-3xl md:text-4xl font-bold text-text-dark mb-6"
                 style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
               >
                 Crafting Slow Moments Since 2026
               </h2>
-              <div className="text-sm md:text-base text-[#8A8070] space-y-4 leading-relaxed">
+              <div className="text-sm md:text-base text-accent-taupe space-y-4 leading-relaxed">
                 <p>
                   Silvertip Cafe started with a simple belief: that coffee is more than just a drink—it’s a connection. Tucked away under a canopy of green in Coimbatore, our space is designed as a quiet sanctuary from the urban rush.
                 </p>
@@ -42,7 +41,7 @@ const AboutSection = () => {
               </div>
             </div>
           </div>
-        </GlassCard>
+        </div>
       </div>
     </section>
   );

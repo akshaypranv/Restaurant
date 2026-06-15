@@ -1,28 +1,282 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #0a0a0a;
-    color: rgba(255, 255, 255, 0.9);
-  }
+/* ── ROOT DESIGN TOKENS ────────────────────────────────────────────────── */
+:root {
+  /* Palette */
+  --color-brand-red:     #A41F13;
+  --color-brand-red-dark:#7D1710;
+  --color-surface-white: #FAF5F1;
+  --color-surface-gray:  #E0DBD8;
+  --color-text-dark:     #292F36;
+  --color-accent-taupe:  #8F7A6E;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+
+  /* Spacing */
+  --section-padding: clamp(3rem, 8vw, 6rem);
+
+  /* Borders */
+  --card-radius:   0.75rem;   /* rounded-xl */
+  --btn-radius:    0.375rem;  /* rounded */
+  --border-color:  #E0DBD8;
+
+  /* Shadows — warm-toned, not cool gray */
+  --shadow-sm:  0 1px 3px rgba(41,47,54,0.08);
+  --shadow-md:  0 4px 16px rgba(41,47,54,0.12);
+  --shadow-lg:  0 8px 32px rgba(41,47,54,0.16);
 }
 
-/* Custom Glassmorphism styles and transitions */
-.glass-panel {
-  backdrop-filter: blur(12px);
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* ── BASE RESETS ───────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
 }
 
-/* Custom Scrollbar for horizontal category scrolling */
+body {
+  background-color: var(--color-surface-white);
+  color:            var(--color-text-dark);
+  font-family:      var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TYPOGRAPHY SCALE ──────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color:       var(--color-text-dark);
+  line-height: 1.15;
+}
+
+/* Hero display headline */
+.headline-display {
+  font-family: var(--font-display);
+  font-size:   clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #FAF5F1; /* white on dark hero overlay */
+}
+
+/* Section heading with red underline accent */
+.heading-section {
+  font-family: var(--font-display);
+  font-size:   clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color:       var(--color-text-dark);
+  position:    relative;
+  display:     inline-block;
+  padding-bottom: 0.5rem;
+}
+.heading-section::after {
+  content:    '';
+  position:   absolute;
+  left:       0;
+  bottom:     0;
+  width:      3rem;
+  height:     2px;
+  background: var(--color-brand-red);
+}
+
+/* ── COMPONENT TOKENS ──────────────────────────────────────────────────── */
+
+/* Cards — clean white surface, no glass */
+.card {
+  background:    var(--color-surface-white);
+  border:        1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  box-shadow:    var(--shadow-sm);
+  transition:    box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform:  translateY(-2px);
+}
+
+/* Primary button */
+.btn-primary {
+  background-color: var(--color-brand-red);
+  color:            #FAF5F1;
+  font-family:      var(--font-body);
+  font-weight:      600;
+  font-size:        0.9375rem;
+  padding:          0.75rem 1.75rem;
+  border-radius:    var(--btn-radius);
+  border:           none;
+  cursor:           pointer;
+  transition:       background-color 0.2s ease, transform 0.15s ease;
+  letter-spacing:   0.02em;
+}
+.btn-primary:hover  { background-color: var(--color-brand-red-dark); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+
+/* Secondary button (outlined) */
+.btn-secondary {
+  background:    transparent;
+  border:        2px solid var(--color-brand-red);
+  color:         var(--color-brand-red);
+  font-weight:   600;
+  padding:       0.625rem 1.5rem;
+  border-radius: var(--btn-radius);
+  cursor:        pointer;
+  transition:    all 0.2s ease;
+}
+.btn-secondary:hover {
+  background:  var(--color-brand-red);
+  color:       #FAF5F1;
+}
+
+/* Input fields */
+.input-field {
+  background:    var(--color-surface-gray);
+  border:        1px solid var(--border-color);
+  border-radius: var(--btn-radius);
+  color:         var(--color-text-dark);
+  padding:       0.625rem 0.875rem;
+  font-family:   var(--font-body);
+  font-size:     0.9375rem;
+  transition:    border-color 0.2s ease, box-shadow 0.2s ease;
+  width:         100%;
+}
+.input-field::placeholder { color: var(--color-accent-taupe); }
+.input-field:focus {
+  outline:      none;
+  border-color: var(--color-brand-red);
+  box-shadow:   0 0 0 3px rgba(164,31,19,0.15);
+}
+
+/* ── HERO SECTION ──────────────────────────────────────────────────────── */
+.hero-section {
+  position:   relative;
+  min-height: 100vh;
+  display:    flex;
+  align-items: center;
+  overflow:   hidden;
+}
+
+.hero-bg-image {
+  position:   absolute;
+  inset:      0;
+  object-fit: cover;
+  width:      100%;
+  height:     100%;
+}
+
+/* Dark gradient overlay from bottom (text legibility) */
+.hero-overlay {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    to top,
+    rgba(41, 47, 54, 0.82) 0%,
+    rgba(41, 47, 54, 0.35) 55%,
+    transparent 100%
+  );
+}
+
+/* Morning-light sweep animation (replaces gold shimmer) */
+.hero-light-sweep {
+  position:   absolute;
+  inset:      0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(250, 245, 241, 0.07) 50%,
+    transparent 65%
+  );
+  background-size: 200% 100%;
+  animation: light-sweep 6s ease-in-out infinite;
+}
+
+@keyframes light-sweep {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── NAVBAR ────────────────────────────────────────────────────────────── */
+/* Scrolled state: white surface. Transparent over hero. */
+.navbar-transparent { background: transparent; }
+.navbar-solid {
+  background:  var(--color-surface-white);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow:  var(--shadow-sm);
+}
+
+/* ── CHATBOT WIDGET ────────────────────────────────────────────────────── */
+.chatbot-fab {
+  background:    var(--color-brand-red);
+  color:         #FAF5F1;
+  border-radius: 50%;
+  width:         3.5rem;
+  height:        3.5rem;
+  box-shadow:    var(--shadow-lg);
+}
+
+.chatbot-panel {
+  background:    var(--color-surface-white);
+  border:        1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow:    var(--shadow-lg);
+}
+
+.chatbot-header {
+  background:    var(--color-brand-red);
+  color:         #FAF5F1;
+  border-radius: 1rem 1rem 0 0;
+  padding:       1rem 1.25rem;
+}
+
+.chatbot-message-user {
+  background:    var(--color-brand-red);
+  color:         #FAF5F1;
+  border-radius: 1rem 1rem 0.25rem 1rem;
+  max-width:     78%;
+  padding:       0.625rem 1rem;
+  align-self:    flex-end;
+}
+
+.chatbot-message-bot {
+  background:    var(--color-surface-gray);
+  color:         var(--color-text-dark);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  max-width:     78%;
+  padding:       0.625rem 1rem;
+  align-self:    flex-start;
+}
+
+/* ── TESTIMONIALS CAROUSEL ─────────────────────────────────────────────── */
+.testimonial-card {
+  background:    var(--color-surface-white);
+  border:        1px solid var(--border-color);
+  border-left:   4px solid var(--color-brand-red); /* red left-rule accent */
+  border-radius: var(--card-radius);
+  padding:       2rem;
+  box-shadow:    var(--shadow-sm);
+}
+
+/* ── STAR RATINGS ──────────────────────────────────────────────────────── */
+.star-filled { color: #C07942; } /* warm amber — readable on white */
+.star-empty  { color: var(--color-surface-gray); }
+
+/* ── ADMIN PANEL OVERRIDE ──────────────────────────────────────────────── */
+.admin-sidebar {
+  background:    var(--color-text-dark); /* #292F36 charcoal sidebar */
+  color:         #FAF5F1;
+}
+.admin-sidebar .nav-link { color: var(--color-accent-taupe); }
+.admin-sidebar .nav-link:hover,
+.admin-sidebar .nav-link.active {
+  color:      #FAF5F1;
+  background: rgba(164, 31, 19, 0.15);
+  border-left: 3px solid var(--color-brand-red);
+}
+
+/* ── CUSTOM SCROLLBARS ─────────────────────────────────────────────────── */
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -37,16 +291,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(41, 47, 54, 0.02);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(143, 122, 110, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(143, 122, 110, 0.4);
 }
 
 /* Custom scrollbar for category tabs */
@@ -54,18 +308,28 @@
   height: 6px;
 }
 .category-scrollbar::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(41, 47, 54, 0.03);
   border-radius: 9999px;
 }
 .category-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(245, 158, 11, 0.35); /* Amber brand color with some opacity */
+  background: rgba(164, 31, 19, 0.35); /* brand-red with some opacity */
   border-radius: 9999px;
 }
 .category-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 158, 11, 0.65);
+  background: rgba(164, 31, 19, 0.65);
 }
 /* Firefox scrollbar styles */
 .category-scrollbar {
-  scrollbar-color: rgba(245, 158, 11, 0.35) rgba(255, 255, 255, 0.03);
+  scrollbar-color: rgba(164, 31, 19, 0.35) rgba(41, 47, 54, 0.03);
   scrollbar-width: thin;
+}
+
+/* ── REDUCED MOTION ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-light-sweep { animation: none; }
+  .card:hover { transform: none; }
+  *, *::before, *::after {
+    animation-duration:   0.01ms !important;
+    transition-duration:  0.01ms !important;
+  }
 }

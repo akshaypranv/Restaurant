@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MenuItemCard from '../menu/MenuItemCard';
-import GlassCard from '../ui/GlassCard';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
@@ -37,16 +36,16 @@ const FeaturedItems = () => {
       <div className="max-w-6xl mx-auto flex flex-col items-center">
         {/* Title Block */}
         <div className="text-center mb-12">
-          <span className="text-xs font-semibold tracking-widest text-amber-brand uppercase mb-2 block">
+          <span className="text-xs font-semibold tracking-widest text-brand-red uppercase mb-2 block">
             Chef's Choices
           </span>
           <h2
-            className="text-3xl md:text-4xl font-bold text-[#F5F0E8] mb-4"
+            className="text-3xl md:text-4xl font-bold text-text-dark mb-4"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
             Signature Specialties
           </h2>
-          <p className="text-sm md:text-base text-[#8A8070] max-w-xl">
+          <p className="text-sm md:text-base text-accent-taupe max-w-xl">
             A hand-picked selection of our most-loved dishes and crafted beverages.
           </p>
         </div>
@@ -55,23 +54,23 @@ const FeaturedItems = () => {
         {loading && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {[1, 2, 3].map(n => (
-              <GlassCard key={n} className="p-5 flex flex-col gap-4 h-[160px] animate-pulse">
+              <div key={n} className="card p-5 flex flex-col gap-4 h-[160px] animate-pulse">
                 <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-sm bg-white/10" />
-                  <div className="h-5 bg-white/10 rounded w-2/3" />
+                  <div className="w-4 h-4 rounded-sm bg-surface-gray" />
+                  <div className="h-5 bg-surface-gray rounded w-2/3" />
                 </div>
-                <div className="h-4 bg-white/5 rounded w-1/2" />
-                <div className="h-6 bg-white/10 rounded w-1/4 mt-auto" />
-              </GlassCard>
+                <div className="h-4 bg-surface-gray/50 rounded w-1/2" />
+                <div className="h-6 bg-surface-gray rounded w-1/4 mt-auto" />
+              </div>
             ))}
           </div>
         )}
 
         {/* Error State */}
         {!loading && error && (
-          <GlassCard className="p-6 text-center text-red-400 max-w-md">
+          <div className="card p-6 text-center text-red-500 max-w-md">
             <p className="text-sm">{error}</p>
-          </GlassCard>
+          </div>
         )}
 
         {/* Items Grid */}
@@ -83,7 +82,7 @@ const FeaturedItems = () => {
               </div>
             ))}
             {items.length === 0 && (
-              <div className="col-span-3 text-center text-white/40 text-sm py-8">
+              <div className="col-span-3 text-center text-accent-taupe text-sm py-8">
                 No featured items available today.
               </div>
             )}

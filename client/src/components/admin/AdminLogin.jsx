@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import useMenuStore from '../../store/useMenuStore';
-import GlassCard from '../ui/GlassCard';
 import ErrorBanner from '../ui/ErrorBanner';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
@@ -40,12 +39,12 @@ const AdminLogin = () => {
 
   return (
     <div className="w-full max-w-md mx-auto py-12 px-4">
-      <GlassCard className="p-8 shadow-2xl">
+      <div className="card p-8 shadow-xl bg-surface-white">
         <div className="text-center mb-6">
-          <h2 className="text-xl font-bold tracking-wide uppercase text-white mb-2">
+          <h2 className="text-xl font-bold tracking-wide uppercase text-text-dark mb-2">
             Admin Portal
           </h2>
-          <p className="text-white/50 text-xs">
+          <p className="text-accent-taupe text-xs">
             Sign in to manage the cafe's digital menu
           </p>
         </div>
@@ -54,7 +53,7 @@ const AdminLogin = () => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div className="flex flex-col gap-1.5">
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider pl-1">
+            <label className="text-text-dark/80 text-xs font-semibold uppercase tracking-wider pl-1">
               Email Address
             </label>
             <input
@@ -63,12 +62,12 @@ const AdminLogin = () => {
               placeholder="admin@silvertip.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-amber-brand/50 transition-all"
+              className="input-field"
             />
           </div>
 
           <div className="flex flex-col gap-1.5">
-            <label className="text-white/60 text-xs font-semibold uppercase tracking-wider pl-1">
+            <label className="text-text-dark/80 text-xs font-semibold uppercase tracking-wider pl-1">
               Password
             </label>
             <input
@@ -77,19 +76,19 @@ const AdminLogin = () => {
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 outline-none focus:ring-2 focus:ring-amber-brand/50 transition-all"
+              className="input-field"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-amber-brand text-black font-semibold uppercase tracking-wider py-3 rounded-xl hover:bg-amber-brand/80 active:scale-95 transition-all text-sm mt-2 disabled:opacity-50 disabled:scale-100"
+            className="btn-primary w-full py-3 rounded-lg active:scale-95 disabled:opacity-50 disabled:scale-100 mt-2"
           >
             {loading ? 'Verifying...' : 'Sign In'}
           </button>
         </form>
-      </GlassCard>
+      </div>
     </div>
   );
 };
