@@ -59,6 +59,7 @@
           "is_veg": true,
           "is_available": true,
           "is_popular": true,
+          "featured": true,
           "note": null
         },
         {
@@ -469,6 +470,7 @@
           "is_veg": true,
           "is_available": true,
           "is_popular": true,
+          "featured": true,
           "note": "Extra Cheese / Toppings - Add 25"
         },
         {
@@ -587,6 +589,7 @@
           "is_veg": false,
           "is_available": true,
           "is_popular": true,
+          "featured": true,
           "note": null
         },
         {

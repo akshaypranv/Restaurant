@@ -117,7 +117,7 @@ describe('Admin Authentication and Authorization', () => {
       db.query
         .mockResolvedValueOnce({ rows: [{ id: 1 }] }) // Category validation passes
         .mockResolvedValueOnce({
-          rows: [{ id: 10, name: '&lt;script&gt;alert(1)&lt;/script&gt;', price: 150.00, is_veg: true }]
+          rows: [{ id: 10, name: '&lt;script&gt;alert(1)&lt;&#x2F;script&gt;', price: 150.00, is_veg: true }]
         }); // Insert result
 
       const res = await request(app)
@@ -133,10 +133,10 @@ describe('Admin Authentication and Authorization', () => {
 
       expect(res.status).toBe(201);
       expect(res.body.status).toBe('success');
-      expect(res.body.data.name).toBe('&lt;script&gt;alert(1)&lt;/script&gt;'); // Sanitised/Escaped
+      expect(res.body.data.name).toBe('&lt;script&gt;alert(1)&lt;&#x2F;script&gt;'); // Sanitised/Escaped
       expect(db.query).toHaveBeenCalledWith(
         expect.stringContaining('INSERT INTO menu_items'),
-        expect.arrayContaining(['&lt;script&gt;alert(1)&lt;/script&gt;'])
+        expect.arrayContaining(['&lt;script&gt;alert(1)&lt;&#x2F;script&gt;'])
       );
       expect(syncMenuJson).toHaveBeenCalled();
     });

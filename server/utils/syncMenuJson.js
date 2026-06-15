@@ -23,6 +23,7 @@ const syncMenuJson = async () => {
         m.is_veg,
         m.is_available,
         m.is_popular,
+        m.featured,
         m.note
       FROM categories c
       LEFT JOIN menu_items m ON c.id = m.category_id
@@ -60,6 +61,7 @@ const syncMenuJson = async () => {
           is_veg: row.is_veg,
           is_available: row.is_available,
           is_popular: row.is_popular,
+          featured: row.featured,
           note: row.note
         });
       }

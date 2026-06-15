@@ -33,6 +33,7 @@ const seed = async () => {
     await client.query('DROP TABLE IF EXISTS menu_items CASCADE;');
     await client.query('DROP TABLE IF EXISTS categories CASCADE;');
     await client.query('DROP TABLE IF EXISTS admins CASCADE;');
+    await client.query('DROP TABLE IF EXISTS contact_submissions CASCADE;');
 
     // Create categories table
     console.log('[Seed] Creating table: categories...');
@@ -61,12 +62,27 @@ const seed = async () => {
         is_available   BOOLEAN NOT NULL DEFAULT TRUE,
         is_popular     BOOLEAN NOT NULL DEFAULT FALSE,
         is_deleted     BOOLEAN NOT NULL DEFAULT FALSE,
+        featured       BOOLEAN NOT NULL DEFAULT FALSE,
         note           TEXT,
         search_vector  TSVECTOR GENERATED ALWAYS AS (
                          to_tsvector('english', name)
                        ) STORED,
         created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW(),
         updated_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      );
+    `);
+
+    // Create contact_submissions table
+    console.log('[Seed] Creating table: contact_submissions...');
+    await client.query(`
+      CREATE TABLE contact_submissions (
+        id          SERIAL PRIMARY KEY,
+        name        VARCHAR(200) NOT NULL,
+        email       VARCHAR(255) NOT NULL,
+        subject     VARCHAR(200) NOT NULL,
+        message     TEXT NOT NULL,
+        created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+        read        BOOLEAN DEFAULT FALSE
       );
     `);
 
@@ -113,8 +129,8 @@ const seed = async () => {
 
       for (const item of cat.items) {
         await client.query(
-          `INSERT INTO menu_items (category_id, name, price, price_alt, price_label, is_veg, is_available, is_popular, note)
-           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`,
+          `INSERT INTO menu_items (category_id, name, price, price_alt, price_label, is_veg, is_available, is_popular, featured, note)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);`,
           [
             categoryId,
             item.name,
@@ -124,6 +140,7 @@ const seed = async () => {
             item.is_veg,
             item.is_available,
             item.is_popular,
+            item.featured !== undefined ? item.featured : false,
             item.note
           ]
         );

@@ -101,6 +101,7 @@ const createItem = async (req, res, next) => {
       is_veg,
       is_available,
       is_popular,
+      featured,
       note
     } = req.body;
 
@@ -115,8 +116,8 @@ const createItem = async (req, res, next) => {
     }
 
     const queryStr = `
-      INSERT INTO menu_items (category_id, name, price, price_alt, price_label, is_veg, is_available, is_popular, note)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+      INSERT INTO menu_items (category_id, name, price, price_alt, price_label, is_veg, is_available, is_popular, featured, note)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
       RETURNING *;
     `;
     const values = [
@@ -128,6 +129,7 @@ const createItem = async (req, res, next) => {
       is_veg,
       is_available !== undefined ? is_available : true,
       is_popular !== undefined ? is_popular : false,
+      featured !== undefined ? featured : false,
       note || null
     ];
 
@@ -149,7 +151,7 @@ const createItem = async (req, res, next) => {
 // Update an existing menu item
 const updateItem = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id, 10);
     const {
       category_id,
       name,
@@ -159,6 +161,7 @@ const updateItem = async (req, res, next) => {
       is_veg,
       is_available,
       is_popular,
+      featured,
       note
     } = req.body;
 
@@ -195,9 +198,10 @@ const updateItem = async (req, res, next) => {
         is_veg = COALESCE($6, is_veg),
         is_available = COALESCE($7, is_available),
         is_popular = COALESCE($8, is_popular),
-        note = $9,
+        featured = COALESCE($9, featured),
+        note = $10,
         updated_at = NOW()
-      WHERE id = $10
+      WHERE id = $11
       RETURNING *;
     `;
     const values = [
@@ -209,6 +213,7 @@ const updateItem = async (req, res, next) => {
       is_veg !== undefined ? is_veg : null,
       is_available !== undefined ? is_available : null,
       is_popular !== undefined ? is_popular : null,
+      featured !== undefined ? featured : null,
       note || null,
       id
     ];
@@ -231,7 +236,7 @@ const updateItem = async (req, res, next) => {
 // Soft delete — marks item as deleted and unavailable. Never hard deletes!
 const deleteItem = async (req, res, next) => {
   try {
-    const { id } = req.params;
+    const id = parseInt(req.params.id, 10);
 
     // Check if item exists
     const itemCheck = await db.query('SELECT 1 FROM menu_items WHERE id = $1', [id]);

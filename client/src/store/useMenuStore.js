@@ -5,7 +5,7 @@ const useMenuStore = create((set) => ({
   searchQuery: '',
   vegFilter: false,
   adminToken: null,
-  currentView: 'menu',
+  currentView: 'home',
 
   setActiveCategory: (category) => set({ 
     activeCategory: category, 

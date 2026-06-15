@@ -34,7 +34,8 @@ const getAllCategories = async (req, res, next) => {
 const getAllMenu = async (req, res, next) => {
   try {
     const vegOnly = req.query.veg === 'true';
-    const cacheKey = vegOnly ? 'menu_veg' : 'menu_all';
+    const featuredOnly = req.query.featured === 'true';
+    const cacheKey = `menu_veg_${vegOnly}_featured_${featuredOnly}`;
     
     // Check if response exists in cache
     const cachedResponse = menuCache.get(cacheKey);
@@ -58,6 +59,7 @@ const getAllMenu = async (req, res, next) => {
         m.is_veg,
         m.is_available,
         m.is_popular,
+        m.featured,
         m.note
       FROM categories c
       LEFT JOIN menu_items m ON c.id = m.category_id AND m.is_available = true
@@ -67,6 +69,10 @@ const getAllMenu = async (req, res, next) => {
 
     if (vegOnly) {
       queryStr += ` AND m.is_veg = true`;
+    }
+
+    if (featuredOnly) {
+      queryStr += ` AND m.featured = true`;
     }
 
     queryStr += ` ORDER BY c.display_order ASC, m.is_popular DESC, m.name ASC`;
@@ -95,6 +101,7 @@ const getAllMenu = async (req, res, next) => {
           is_veg: row.is_veg,
           is_available: row.is_available,
           is_popular: row.is_popular,
+          featured: row.featured,
           note: row.note
         });
       }
@@ -102,7 +109,7 @@ const getAllMenu = async (req, res, next) => {
 
     const responseData = {
       status: 'success',
-      data: Object.values(categoriesMap)
+      data: Object.values(categoriesMap).filter(cat => cat.items.length > 0)
     };
 
     // Store in cache

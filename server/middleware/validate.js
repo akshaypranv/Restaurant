@@ -69,6 +69,9 @@ const validateMenuItem = [
   body('is_popular')
     .optional()
     .isBoolean().withMessage('is_popular must be a boolean value'),
+  body('featured')
+    .optional()
+    .isBoolean().withMessage('featured must be a boolean value'),
   body('note')
     .optional({ nullable: true })
     .isString().withMessage('Note must be a string')
@@ -109,6 +112,9 @@ const validateMenuItemUpdate = [
   body('is_popular')
     .optional()
     .isBoolean().withMessage('is_popular must be a boolean value'),
+  body('featured')
+    .optional()
+    .isBoolean().withMessage('featured must be a boolean value'),
   body('note')
     .optional({ nullable: true })
     .isString().withMessage('Note must be a string')
@@ -117,9 +123,47 @@ const validateMenuItemUpdate = [
   checkValidationResult
 ];
 
+// Contact submission validation
+const validateContact = [
+  body('name')
+    .isString().withMessage('Name must be a string')
+    .trim()
+    .isLength({ min: 1, max: 200 }).withMessage('Name must be between 1 and 200 characters')
+    .escape(),
+  body('email')
+    .isEmail().withMessage('Please provide a valid email address')
+    .normalizeEmail(),
+  body('subject')
+    .isString().withMessage('Subject must be a string')
+    .trim()
+    .isIn(['General Inquiry', 'Reservation', 'Feedback', 'Event Booking']).withMessage('Subject must be one of: General Inquiry, Reservation, Feedback, Event Booking')
+    .escape(),
+  body('message')
+    .isString().withMessage('Message must be a string')
+    .trim()
+    .isLength({ min: 1, max: 5000 }).withMessage('Message must be between 1 and 5000 characters')
+    .escape(),
+  checkValidationResult
+];
+
+// Chatbot validation
+const validateChat = [
+  body('messages')
+    .isArray({ min: 1 }).withMessage('Messages must be a non-empty array'),
+  body('messages.*.role')
+    .isIn(['user', 'assistant', 'system']).withMessage('Message role must be user, assistant, or system'),
+  body('messages.*.content')
+    .isString().withMessage('Message content must be a string')
+    .trim()
+    .isLength({ min: 1 }).withMessage('Message content cannot be empty'),
+  checkValidationResult
+];
+
 module.exports = {
   validateSearch,
   validateLogin,
   validateMenuItem,
-  validateMenuItemUpdate
+  validateMenuItemUpdate,
+  validateContact,
+  validateChat
 };

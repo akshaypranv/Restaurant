@@ -5,8 +5,11 @@ const config = require('./config/config');
 const db = require('./config/db');
 const menuRoutes = require('./routes/menuRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const contactRoutes = require('./routes/contact');
+const chatRoutes = require('./routes/chat');
 
 const app = express();
+
 
 // Apply security headers
 app.use(helmet());
@@ -50,6 +53,8 @@ app.get('/api/v1/health', async (req, res) => {
 // Register routes
 app.use('/api/v1', menuRoutes);
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/contact', contactRoutes);
+app.use('/api/v1/chat', chatRoutes);
 
 // Wildcard 404 handler for API routes
 app.use('/api/*', (req, res) => {

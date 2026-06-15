@@ -3,17 +3,17 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, test, expect, vi } from 'vitest';
 import CategoryTabs from '../components/menu/CategoryTabs';
-import useMenuStore from '../../store/useMenuStore';
+
+// Declare mock with prefix so hoisting is supported
+const mockSetActiveCategory = vi.fn();
 
 // Mock the store
-vi.mock('../../store/useMenuStore', () => {
-  const activeCategory = 'all';
-  const setActiveCategory = vi.fn();
+vi.mock('../store/useMenuStore', () => {
   return {
-    default: vi.fn(() => ({
-      activeCategory,
-      setActiveCategory
-    }))
+    default: () => ({
+      activeCategory: 'all',
+      setActiveCategory: mockSetActiveCategory
+    })
   };
 });
 
@@ -36,13 +36,11 @@ describe('CategoryTabs Component', () => {
       { id: 1, name: 'Soups', slug: 'soups' }
     ];
 
-    const store = useMenuStore();
-
     render(<CategoryTabs categories={categories} />);
     
     const soupsTab = screen.getByText('Soups');
     await userEvent.click(soupsTab);
     
-    expect(store.setActiveCategory).toHaveBeenCalledWith('soups');
+    expect(mockSetActiveCategory).toHaveBeenCalledWith('soups');
   });
 });

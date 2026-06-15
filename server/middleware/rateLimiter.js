@@ -32,7 +32,41 @@ const loginLimiter = rateLimit({
   }
 });
 
+// Rate limiter for contact form submissions: 5 submissions per hour
+const contactLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 5, // Limit each IP to 5 contact submissions per hour
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    status: 'error',
+    message: 'Too many contact submissions from this IP, please try again after an hour',
+    code: 'RATE_LIMITED'
+  },
+  handler: (req, res, next, options) => {
+    res.status(429).json(options.message);
+  }
+});
+
+// Rate limiter for chatbot requests: 20 messages per hour
+const chatLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 20, // Limit each IP to 20 chat messages per hour
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    status: 'error',
+    message: 'Too many messages sent to the chatbot, please try again after an hour',
+    code: 'RATE_LIMITED'
+  },
+  handler: (req, res, next, options) => {
+    res.status(429).json(options.message);
+  }
+});
+
 module.exports = {
   searchLimiter,
-  loginLimiter
+  loginLimiter,
+  contactLimiter,
+  chatLimiter
 };
