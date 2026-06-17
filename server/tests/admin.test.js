@@ -16,8 +16,8 @@ jest.mock('../utils/syncMenuJson', () => jest.fn().mockResolvedValue(true));
 
 describe('Admin Authentication and Authorization', () => {
   let adminToken;
-  const adminEmail = 'admin@silvertip.com';
-  const password = 'password123';
+  const adminEmail = 'admin@silvertipcafe.com';
+  const password = '123@silvertip';
   let passwordHash;
 
   beforeAll(() => {

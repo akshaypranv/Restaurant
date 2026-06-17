@@ -14,7 +14,7 @@ jest.mock('../config/db', () => ({
 
 describe('Contact Submission API', () => {
   let adminToken;
-  const adminEmail = 'admin@silvertip.com';
+  const adminEmail = 'admin@silvertipcafe.com';
 
   beforeAll(() => {
     adminToken = jwt.sign({ id: 1, email: adminEmail }, process.env.JWT_SECRET, { expiresIn: '1h' });

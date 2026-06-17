@@ -103,10 +103,10 @@ const seed = async () => {
 
     console.log('[Seed] Seeding default admin user...');
     const bcrypt = require('bcryptjs');
-    const hashedPassword = await bcrypt.hash('password123', 12);
+    const hashedPassword = await bcrypt.hash('123@silvertip', 12);
     await client.query(
       `INSERT INTO admins (email, password_hash) VALUES ($1, $2);`,
-      ['admin@silvertip.com', hashedPassword]
+      ['admin@silvertipcafe.com', hashedPassword]
     );
 
     // Create indexes

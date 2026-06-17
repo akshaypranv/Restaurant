@@ -59,7 +59,7 @@ const AdminLogin = () => {
             <input
               type="email"
               required
-              placeholder="admin@silvertip.com"
+              placeholder="admin@silvertipcafe.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="input-field"
