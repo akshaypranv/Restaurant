@@ -82,7 +82,11 @@ const syncMenuJson = async () => {
     console.log('[Sync] menu.json updated successfully via atomic write');
     return true;
   } catch (error) {
-    console.error('[Sync] Error synchronising menu.json:', error);
+    console.warn('[Sync] Warning: Could not synchronise menu.json:', error.message);
+    if (error.code === 'EROFS' || error.code === 'EACCES' || error.code === 'EPERM') {
+      console.warn('[Sync] Continuing without file-sync as filesystem is read-only or restricted.');
+      return false;
+    }
     throw error;
   }
 };
