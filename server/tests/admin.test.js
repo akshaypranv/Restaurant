@@ -3,7 +3,7 @@ process.env.JWT_SECRET = 'mock_jwt_secret_must_be_at_least_32_chars_long';
 
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const app = require('../app');
 const db = require('../config/db');
 const syncMenuJson = require('../utils/syncMenuJson');

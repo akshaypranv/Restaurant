@@ -98,7 +98,7 @@ const seed = async () => {
     `);
 
     console.log('[Seed] Seeding default admin user...');
-    const bcrypt = require('bcrypt');
+    const bcrypt = require('bcryptjs');
     const hashedPassword = await bcrypt.hash('password123', 12);
     await client.query(
       `INSERT INTO admins (email, password_hash) VALUES ($1, $2);`,
@@ -123,7 +123,7 @@ const seed = async () => {
          RETURNING id;`,
         [cat.name, cat.slug, cat.display_order, cat.page_group]
       );
-      
+
       const categoryId = catRes.rows[0].id;
       insertedCategories++;
 
