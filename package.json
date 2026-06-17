@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "install:all": "npm install --include=dev && npm install --prefix server --include=dev && npm install --prefix client --include=dev",
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
     "test": "npm run test --prefix server && npm run test --prefix client",
     "seed": "node server/seed.js",
     "build": "npm run build --prefix client"
+  },
+  "dependencies": {
+    "serverless-http": "^3.2.0"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

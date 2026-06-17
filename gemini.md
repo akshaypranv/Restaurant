@@ -297,8 +297,8 @@ All data below is sourced from the three Silvertip Cafe menu pages. This becomes
 **Why bcrypt:** Industry standard for password hashing. Cost factor 12 makes brute-force attacks computationally expensive (each hash takes ~250ms), while remaining fast enough for the occasional legitimate admin login.
 
 ### Deployment
-- **Backend:** Railway or Render — both offer free-tier PostgreSQL and Node.js hosting. Railway provides automatic deploys from GitHub.
-- **Frontend:** Vercel — automatic Vite builds from GitHub with zero configuration. Free tier is more than sufficient for a cafe menu.
+- **Backend:** Netlify Functions — serverless backend hosting. Netlify automatically bundles and deploys function endpoints.
+- **Frontend:** Netlify — automatic Vite builds from GitHub with zero configuration. Free tier is more than sufficient for a cafe menu.
 - **Environment variables** keep all secrets (DB connection strings, JWT secret) out of the codebase.
 
 ---
@@ -969,10 +969,9 @@ All backend and frontend tests green.
 4. Add a `/api/v1/health` endpoint returning DB connection status
 5. Write `README.md` with setup instructions, env var reference, and seed instructions
 6. Configure production CORS using `ALLOWED_ORIGINS` environment variable
-7. Deploy backend to Railway (set all env vars in dashboard)
-8. Deploy frontend to Vercel (set `VITE_API_BASE_URL` to Railway backend URL)
-9. Generate QR code pointing to the Vercel frontend URL for table placement
-10. Run all tests against the production endpoints
+7. Deploy to Netlify (set DATABASE_URL, JWT_SECRET, and ALLOWED_ORIGINS in the Netlify dashboard)
+8. Generate QR code pointing to the Netlify site URL for table placement
+9. Run all tests against the production endpoints
 
 ---
 
@@ -1022,7 +1021,7 @@ PORT=5000
 NODE_ENV=development
 
 # Security
-ALLOWED_ORIGINS=http://localhost:5173,https://silvertip.vercel.app
+ALLOWED_ORIGINS=http://localhost:5173,https://your-site.netlify.app
 ```
 
 ### `client/.env` (safe to commit if no secrets)
