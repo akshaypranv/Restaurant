@@ -17,6 +17,13 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Sync categoryId when categories load or modal opens
+  React.useEffect(() => {
+    if (isOpen && categories.length > 0 && !categoryId) {
+      setCategoryId(categories[0].id);
+    }
+  }, [isOpen, categories, categoryId]);
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
@@ -55,6 +62,7 @@ const AddItemModal = ({ isOpen, onClose, categories = [], onSuccess }) => {
         setPriceLabel('');
         setIsVeg(true);
         setNote('');
+        setCategoryId('');
       } else {
         throw new Error(response.data?.message || 'Failed to add menu item');
       }
