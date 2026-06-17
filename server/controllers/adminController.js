@@ -279,6 +279,7 @@ const deleteItem = async (req, res, next) => {
 
 // Bulk reorder or rename categories
 const updateCategories = async (req, res, next) => {
+  let client;
   try {
     const categories = req.body.categories; // Expects an array: [{ id, name, display_order }]
 
@@ -290,7 +291,8 @@ const updateCategories = async (req, res, next) => {
       });
     }
 
-    await db.query('BEGIN');
+    client = await db.pool.connect();
+    await client.query('BEGIN');
 
     for (const cat of categories) {
       const { id, name, display_order } = cat;
@@ -301,10 +303,12 @@ const updateCategories = async (req, res, next) => {
           display_order = COALESCE($2, display_order)
         WHERE id = $3
       `;
-      await db.query(updateStr, [name || null, display_order !== undefined ? display_order : null, id]);
+      await client.query(updateStr, [name || null, display_order !== undefined ? display_order : null, id]);
     }
 
-    await db.query('COMMIT');
+    await client.query('COMMIT');
+    client.release();
+    client = null;
 
     // Sync DB contents to menu.json and invalidate cache
     await syncMenuJson();
@@ -315,7 +319,14 @@ const updateCategories = async (req, res, next) => {
       message: 'Categories updated successfully'
     });
   } catch (err) {
-    await db.query('ROLLBACK');
+    if (client) {
+      try {
+        await client.query('ROLLBACK');
+      } catch (rollbackErr) {
+        console.error('Rollback error:', rollbackErr);
+      }
+      client.release();
+    }
     next(err);
   }
 };
