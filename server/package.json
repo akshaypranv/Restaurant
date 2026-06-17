@@ -26,11 +26,8 @@
     "nodemon": "^3.0.2",
     "supertest": "^6.3.3"
   },
-  "private": true
-}
-{
-  "name": "silvertip-cafe-server",
+  "private": true,
   "engines": {
     "node": "20.x"
-  },
+  }
 }
