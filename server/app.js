@@ -14,18 +14,30 @@ const app = express();
 // Apply security headers
 app.use(helmet());
 
-// Configure CORS
-app.use(cors({
-  origin: (origin, callback) => {
+// Configure CORS dynamically
+app.use(cors((req, callback) => {
+  const origin = req.header('Origin');
+  const host = req.header('Host');
+  
+  let isAllowed = false;
+  
+  if (!origin) {
     // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (config.ALLOWED_ORIGINS.indexOf(origin) !== -1 || config.NODE_ENV === 'development') {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
+    isAllowed = true;
+  } else if (
+    origin === `https://${host}` || 
+    origin === `http://${host}` || 
+    config.ALLOWED_ORIGINS.indexOf(origin) !== -1 || 
+    config.NODE_ENV === 'development'
+  ) {
+    isAllowed = true;
+  }
+  
+  if (isAllowed) {
+    callback(null, { origin: true, credentials: true });
+  } else {
+    callback(new Error('Not allowed by CORS'));
+  }
 }));
 
 // Body parsers
